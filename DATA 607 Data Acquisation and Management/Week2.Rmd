@@ -1,0 +1,110 @@
+---
+title: "Movie Ratings"
+author: "Dhananjay Kumar"
+date: "September 9, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(gWidgets)
+library(jsonlite)
+library(RMySQL)
+library(dbConnect)
+library(plotly)
+mydb = dbConnect(MySQL(), user='root', password='admin', dbname='movies', host='localhost')
+dbListTables(mydb)
+```
+
+## <span style="color:#3a9fbf">Load Data from MySQL</span>
+The below code chunk will retrieve data in MySQL from table ratings. Please not that after fetching data, do close the database connection.
+```{r warning=FALSE}
+res <- dbSendQuery(mydb, "SELECT * FROM ratings")
+mRatings <- fetch(res, n=-1)
+# Disconnect from the database
+dbDisconnect(mydb)
+```
+
+## <span style="color:#3a9fbf">View Data</span>
+Lets view data that we have collected from five distinct users. The table has five columns: **CriticName** : Name of the Viewer, **MovieName**: Movie Title, **Year**: Year of Release. **Genre**: Genre of the movie, **Ratings**: Ratings given by the Viewers on the scale of 1 to 5.
+```{r warning=FALSE}
+# View Data
+knitr::kable(mRatings)
+```
+
+## <span style="color:#3a9fbf">Get Movie Names</span>
+Below are the name of the movies, that viewer has rated
+```{r pressure, echo=FALSE}
+# Get Movie Names
+mNames <- subset(mRatings, select = c(MovieName))
+mNames <- unique(mNames)
+knitr::kable(mNames)
+```
+
+```{r warning=FALSE, include=FALSE}
+
+movieList1 = list()
+movieList2 = list()
+
+for (i in 1:6) {
+  movieName <- mNames$MovieName[i]
+  meanRat <- subset(mRatings, MovieName == movieName, select = c(Rating))
+  
+  mURL <- paste0("http://www.omdbapi.com/?y=2016&plot=short&r=json&t=",movieName)
+  raw.data <- readLines(mURL, warn = "F")
+  rd <- fromJSON(raw.data)
+  nData <- data.frame(movieName, mean(meanRat$Rating))
+  newData <- data.frame(rd$Title,mean(meanRat$Rating), rd$Rated, rd$Released, rd$Director, rd$Actors, rd$imdbRating )
+
+  if (i==1) {
+   newData$Poster <- sprintf('![](movies/1.jpg)')
+  } else if (i==2) {
+    newData$Poster <- sprintf('![](movies/2.jpg)')
+  } 
+  else if (i==3) {
+    newData$Poster <- sprintf('![](movies/3.jpg)')
+  } 
+  else if (i==4) {
+    newData$Poster <- sprintf('![](movies/4.jpg)')
+  } 
+  else if (i==5) {
+    newData$Poster <- sprintf('![](movies/5.jpg)')
+  } 
+  else {
+    newData$Poster <- sprintf('![](movies/6.jpg)')
+  } 
+  movieList1[[i]] <- nData
+  movieList2[[i]] <- newData
+}
+
+```
+
+## <span style="color:#3a9fbf">Mean Ratings</span> 
+We have taken the mean of the ratings given by viewer for each movie and shown below
+```{r warning=FALSE}
+mNameRat1 <- bind_rows(movieList1)
+colnames(mNameRat1) <- c("Title", "Rating")
+knitr::kable(mNameRat1)
+```
+
+## <span style="color:#3a9fbf">Bar Plot</span>
+Lets create a bar plot of the captured data and see which movie has highest rating. As seen in the below bar plot, movie Jason Bourne has highest rating and movie Morgan has lowest.
+```{r warning=FALSE}
+p <- plot_ly(
+  data = mNameRat1,
+  x = Title,
+  y = Rating,
+  name = "Viewer Ratings",
+  type = "bar") 
+p
+```
+
+## <span style="color:#3a9fbf">Additional Information</span>
+Our data is very limited to the ratings given by the viewers. Lets bring other information like cast, IMDB Ratings & Director for each movie. To retrieve this information we can leverage various APIs available on internet. For the below information I have used http://www.omdbapi.com/
+```{r warning=FALSE}
+mNameRat2 <- bind_rows(movieList2)
+colnames(mNameRat2) <- c("Title", "Viewer Rating", "Rated", "Released", "Director","Cast","IMDB Rating","Poster")
+knitr::kable(mNameRat2)
+```
+
