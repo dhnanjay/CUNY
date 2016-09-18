@@ -1,0 +1,162 @@
+---
+title: "Regular Expressions"
+author: "Dhananjay Kumar"
+date: "September 14, 2016"
+output: html_document
+---
+### REGULAR EXPRESSIONS AND ESSENTIAL STRING FUNCTIONS
+
+In this assignment I have tried to provide solution for some selective questions in Chapter 8 of Automated Data Collection in R
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+library(stringr)
+library(dplyr)
+```
+
+**Q.3.** Copy the introductory example. The vector name stores the extracted names.
+R> name
+[1] "Moe Szyslak" "Burns, C. Montgomery" "Rev. Timothy Lovejoy"
+[4] "Ned Flanders" "Simpson, Homer" "Dr. Julius Hibbert"
+
+**(a)** Use the tools of this chapter to rearrange the vector so that all elements conform to the standard first_name last_name
+```{r}
+raw.data <- "555-1239Moe Szyslak(636) 555-0113Burns, C. Montgomery555 -6542Rev. Timothy Lovejoy555 8904Ned Flanders636-555-3226Simpson, Homer5553642Dr. Julius Hibbert"
+
+name <- unlist(str_extract_all(raw.data, "[[:alpha:]., ]{2,}"))
+```
+
+**Solution**
+```{r warning=FALSE}
+nData <- str_replace(name, "[[:alpha:]]{1,3}[.]", "")
+nData <- sub("^\\s+", "", nData)
+modData <- str_split_fixed(nData, " ", 2)
+listName  = list()
+for (i in 1:length(name)) {
+ if(length(grep(',',modData[i, 1]))==0) {
+   firstName <- modData[i, 1]
+   lastName <- modData[i,2]
+ }
+ else {
+   firstName <- modData[i, 2]
+   lastName <- modData[i,1]
+ }  
+  lastName <- str_replace_all(lastName, ",","")
+  fd <- data.frame(firstName, lastName)
+  listName[[i]] <- fd
+}
+Name <- bind_rows(listName)
+colnames(Name) <- c("First Name", "Last Name")
+knitr::kable(Name)
+
+```
+
+
+**(b)** Construct a logical vector indicating whether a character has a title (i.e., Rev. and Dr.).
+
+**Solution**
+```{r}
+tName <- str_detect(name, "[[:alpha:]]{2,3}[.]")
+
+for (i in 1:length(name)) {
+ if (length(grep(c('Rev.'), name[i]))>0) {
+  print(name[i])
+ }
+ else if (length(grep(c('Dr.'), name[i]))>0) {
+  print(name[i])
+ }
+} 
+name
+tName
+```
+
+
+**(c)** Construct a logical vector indicating whether a character has a second name.
+```{r warning=FALSE}
+sName <- str_replace(name, "[[:alpha:]]{2,3}[.]", "")
+get2Name <- function(sName){
+lastName  = list()
+for (i in 1:length(name)) {
+ if(length(grep('[.]',sName[i]))>0) {
+   SecondName <- TRUE
+ }
+ else {
+   SecondName <- FALSE
+ }  
+  ld <- data.frame(SecondName)
+  lastName[[i]] <- ld
+}
+Name2 <- bind_rows(lastName)
+return(Name2)
+}
+
+has2Name <-get2Name(sName)
+sName
+has2Name
+```
+
+**Q.4** Describe the types of strings that conform to the following regular expressions and construct an example that is matched by the regular expression.
+
+**(a)** [0-9]+\\$
+
+**Solution** 
+The above REGEX will work for any string that has numbers followed by Dollar sign.The Dollar sign would be ignored.
+```{r}
+exData1 <- c("131dfsf$dv1", '3$12313', 'SomeRandomText')
+str_detect(exData1, "[0-9]+\\$")
+```
+
+**(b)** \\b[a-z]{1,4}\\b
+
+**Solution**
+The above REGEX will extract pattern out of string that has upto four continous lowercase alphabet characters.
+```{r}
+exData2 <-c("TRuE", "fals!", "true", "wILLNotw0rK")
+unlist(str_extract_all(exData2, "\\b[a-z]{1,4}\\b"))
+```
+
+**(c)**  .*?\\.txt$
+
+**Solution**
+The above REGEX will work for strings that ends in ".txt".
+```{r}
+exData3 <- c("131dfsf$dv1", '3$12313', 'SomeRandomText.txt')
+str_detect(exData3, ".*?\\.txt$")
+```
+
+
+**(d)** \\d{2}/\\d{2}/\\d{4}
+
+**Solution**
+The above REGEX is useful in matching patterns like date i.e. two number followed by forword slash, another two number followed by forward slash and in the end four numbers. Its still not a validation for date format as it will extract upto 2/2/4 numeric characters from the string irrespective of the string length. Please see below example.
+```{r}
+exData4 <- c("mm/dd/yyyy", "09/15/2016", "121/12/2222")
+str_detect(exData4, "\\d{2}/\\d{2}/\\d{4}")
+```
+
+**(e)** <(.+?)>.+?</\\1>
+
+**Solution**
+The above REGEX is useful in finding text or characters with valid and syntactically correct HTML tags from the given string.
+```{r}
+exData5 <- c("<h3> This will work</h3>", "<h3>This will not<h3>", "SomeRandomText.html")
+str_detect(exData5, "<(.+?)>.+?</\\1>")
+```
+
+
+**Q.9** The following code hides a secret message. Crack it with R and regular expressions. Hint: Some of the characters are more revealing than others! The code snippet is also available in the materials at www.r-datacollection.com.
+
+
+clcopCow1zmstc0d87wnkig7OvdicpNuggvhryn92Gjuwczi8hqrfpRxs5Aj5dwpn0TanwoUwisdij7Lj8kpf03AT5Idr3coc0bt7yczjatOaootj55t3Nj3ne6c4Sfek.r1w1YwwojigO
+d6vrfUrbz2.2bkAnbhzgv4R9i05zEcrop.wAgnb.SqoU65fPa1otfb7wEm24k6t3sR9zqe5fy89n6Nd5t9kc4fE905gmc4Rgxo5nhDk!gr
+
+**Solution**
+Below is the solution, although I must admint that the following post on stackoverflow did help me : http://stackoverflow.com/questions/35542346/r-using-regmatches-to-extract-certain-characters
+```{r}
+cipher <- "clcopCow1zmstc0d87wnkig7OvdicpNuggvhryn92Gjuwczi8hqrfpRxs5Aj5dwpn0TanwoUwisdij7Lj8kpf03AT5Idr3coc0bt7yczjatOaootj55t3Nj3ne6c4Sfek.r1w1YwwojigOd6vrfUrbz2.2bkAnbhzgv4R9i05zEcrop.wAgnb.SqoU65fPa1otfb7wEm24k6t3sR9zqe5fy89n6Nd5t9kc4fE905gmc4Rgxo5nhDk!gr"
+
+decipher <- unlist(str_extract_all(cipher, "[[:upper:].]{1,}"))
+decipher <- str_replace_all(paste(decipher, collapse = ''), "[.]", " ")
+decipher
+```
+
