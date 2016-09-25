@@ -1,0 +1,87 @@
+---
+title: "Project 1: Chess Tournament"
+author: "Dhananjay Kumar"
+date: "September 20, 2016"
+output: html_document
+---
+### <span style="color:#72BCD4">Project summary</span>
+
+In this project, you're given a text file with chess tournament results where the information has some structure. Your
+job is to create an R Markdown file that generates a .CSV file (that could for example be imported into a SQL database)
+with the following information for all of the players:
+Player's Name, Player's State, Total Number of Points, Player's Pre-Rating, and Average Pre Chess Rating of Opponents
+For the first player, the information would be:
+Gary Hua, ON, 6.0, 1794, 1605
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(stringr)
+library(DT)
+```
+
+
+### <span style="color:#72BCD4">Data Import</span>
+
+Lets import data from the text file and validate using head and tail.
+
+```{r}
+tournamentinfo <- read.csv(paste0("C:/Users/admin-server/Documents/tournamentinfo.txt"), header=F)
+head(tournamentinfo)
+tail(tournamentinfo)
+```
+
+### <span style="color:#72BCD4">Data Wrangling</span>
+
+As seen above, we need to remove the header i.e row 1 to row 4.Without removing header the subsequent code of retrieving Player Info and Rating Info will not work.
+```{r}
+tournamentinfo <- tournamentinfo[-c(1:4),]
+head(tournamentinfo)
+```
+
+
+If you see carefully, we need to extract every 1 + 3nth row for Player Name and 2 + 3nth row for Player ratings. 
+```{r}
+playerInfo <- tournamentinfo[seq(1, length(tournamentinfo), 3)]
+ratingInfo <- tournamentinfo[seq(2, length(tournamentinfo), 3)]
+```
+
+### <span style="color:#72BCD4">Extract Data using Regular Expression</span>
+
+```{r}
+pairNo <- as.integer(str_extract(playerInfo, "\\d+"))
+Name <- str_trim(str_extract(playerInfo, "(\\w+\\s){2,3}"))
+Region <- str_extract(ratingInfo, "\\w+")
+Points <- as.numeric(str_extract(playerInfo, "\\d+\\.\\d+"))
+Rating <- as.integer(str_extract(str_extract(ratingInfo, "[^\\d]\\d{3,4}[^\\d]"), "\\d+"))
+Opponents <- str_extract_all(str_extract_all(playerInfo, "\\d+\\|"), "\\d+")
+Won <- str_count(playerInfo, "\\Q|W  \\E")
+Loose <- str_count(playerInfo, "\\Q|L  \\E")
+Draw <- str_count(playerInfo, "\\Q|D  \\E")
+```
+
+### <span style="color:#72BCD4">Calculate Opponents Mean Rating</span>
+
+To calculate Mean Rating, we add all the Opponents Pre Torunamanet Ratings and divide it by the total number of games played by the player. For example, consider the case of Player 1: Gary Hua. To calculate Mean Rating we need to do the following in R : (1463 +1563 + 1600 + 1610 + 1649 + 1663 + 1716)/7 = 1605
+
+```{r}
+mRating <- length(playerInfo)
+for (i in 1:length(playerInfo)) { 
+  mRating[i] <- round(mean(Rating[as.numeric(unlist(Opponents[pairNo[i]]))]), digits = 0) 
+}
+opData <- data.frame(Name, Region, Points, Rating, mRating, Won, Loose, Draw);
+```
+
+### <span style="color:#72BCD4">Lets see the data</span>
+
+```{r}
+colnames(opData) <- c("Player's Name", "Player's State", "Total Number of Points", "Player's Pre-Rating", " Average Pre Chess Rating of Opponents", "Won", "Loose", "Draw")
+datatable(opData)
+```
+
+### <span style="color:#72BCD4"> Create CSV output file </span>
+
+The below writes the data opData into a CSV format that it creates by the name of **chessInfo.csv**. Please Note that the file is written to your working directory.
+```{r}
+write.csv(opData, file = "chessInfo.csv")
+```
+
