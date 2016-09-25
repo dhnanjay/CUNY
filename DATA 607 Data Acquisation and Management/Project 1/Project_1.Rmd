@@ -74,7 +74,7 @@ opData <- data.frame(Name, Region, Points, Rating, mRating, Won, Loose, Draw);
 ### <span style="color:#72BCD4">Lets see the data</span>
 
 ```{r}
-colnames(opData) <- c("Player's Name", "Player's State", "Total Number of Points", "Player's Pre-Rating", " Average Pre Chess Rating of Opponents", "Won", "Loose", "Draw")
+colnames(opData) <- c("Player's Name", "Player's State", "Total Number of Points", "Player's Pre-Rating", " Average Pre Chess Rating of Opponents", "Won", "Lost", "Draw")
 datatable(opData)
 ```
 

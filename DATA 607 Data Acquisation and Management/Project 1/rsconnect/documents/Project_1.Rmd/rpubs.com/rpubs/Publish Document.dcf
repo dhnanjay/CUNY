@@ -3,5 +3,5 @@ account: rpubs
 server: rpubs.com
 appId: https://api.rpubs.com/api/v1/document/212429/6d7c232200824807afd4c5b26a4dd75d
 bundleId: https://api.rpubs.com/api/v1/document/212429/6d7c232200824807afd4c5b26a4dd75d
-url: http://rpubs.com/publish/claim/212429/443aa895acc24312ae4013349d5e1ba3
-when: 1474839745.32293
+url: http://rpubs.com/dhnanjay/212429
+when: 1474841108.62448
