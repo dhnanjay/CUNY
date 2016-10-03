@@ -2,7 +2,12 @@
 title: "Project 1: Chess Tournament"
 author: "Dhananjay Kumar"
 date: "September 20, 2016"
-output: html_document
+output:
+  html_document:
+   theme: flatly
+   highlight: pygments
+   toc: true
+   toc_float: true
 ---
 ### <span style="color:#72BCD4">Project summary</span>
 

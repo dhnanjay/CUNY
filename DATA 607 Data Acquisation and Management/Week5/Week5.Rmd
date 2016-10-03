@@ -1,0 +1,117 @@
+---
+title: "Tidying and Transforming Data"
+author: "<p><img class='dj'  data-pin-nopin='true'> Dhananjay Kumar</p>"
+date: "September 28, 2016"
+output:
+  html_document:
+   theme: flatly
+   highlight: pygments
+   toc: true
+   toc_float: true
+   css: dj.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyr)
+library(readr)
+library(ggplot2)
+library(plotly)
+library(knitr)
+library(magrittr)
+library(sqldf)
+library(stringr)
+library(tcltk)
+library(DT)
+```
+
+## Assignment
+
+**1.** Create a .CSV file that includes the Airline information .
+
+**2.** Read the information from your .CSV file into R, and use tidyr and dplyr as needed to tidy and transform your data.
+
+**3.** Perform analysis to compare the arrival delays for the two airlines.
+
+## Load Data
+
+### 1.1 Load CSV file
+Load CSV file from desktop and validate it using Head.
+```{r warning=FALSE}
+untidyData <-  read.csv(paste0("C:/data/tidyingData.csv"), header=T)
+kable(untidyData)
+```
+
+
+
+## Tidy Data 
+
+### 2.1 Tidy Data - I
+
+Lets tidy the untidy dataset by gathering the destination cities in one Column : ** Destination**.
+
+```{r warning=FALSE}
+untidyData <- untidyData %>% gather(Destination, n, Los.Angeles:Seattle)
+datatable(untidyData)
+```
+
+### 2.2 Tidy Data - II
+
+Lets create column names from Categorical data **Status**. This will make our untidy dataset to Tidy dataset as all varibales will be moved to Columns and  Observations into Rows.
+
+```{r warning=FALSE}
+tidyData <- untidyData %>% spread(Status, n)
+datatable(tidyData)
+```
+
+
+## Analysis
+
+### 3.1 Probability
+
+Lets add two more columns to our tidy dataset : **onTime_Probability**, **Delayed_Probability**
+```{r warning=FALSE}
+tidyData$onTime_Probability <- round((tidyData$onTime / (tidyData$delayed + tidyData$onTime)), digits = 3)
+tidyData$Delayed_Probability <- round((tidyData$delayed / (tidyData$delayed + tidyData$onTime)), digits = 3)
+datatable(tidyData)
+```
+
+### 3.2 Summarize Data
+
+Below we have summarized data on the basis of On time Probability.
+```{r warning=FALSE}
+b <- data.frame((summary(sqldf('select onTime_Probability from tidyData where AirLine = "ALASKA"'))), summary(sqldf('select onTime_Probability from tidyData where AirLine = "AM WEST"')) )
+AL <- str_split_fixed(b$Freq, ":", 2)
+AMWest <- str_split_fixed(b$Freq.1, ":", 2)
+meanData <- data.frame(AL, AMWest)
+meanData$X1.1 <- NULL
+colnames(meanData) <- c("Function", "Alaska", "AM West")
+kable(meanData)
+
+```
+
+
+As seen above, the Alaskan Airlines has better on Time performance than AM West.
+
+## Plots {.tabset}
+
+### 4.1 Scatter Chart
+
+The Scatter Chart below shows that Phoenix has best on time probability for both AirLines and San Francisco has least on time probability for both Airlines.
+```{r}
+bsc <- ggplot(tidyData, aes(x = Destination , y = onTime_Probability))  + geom_point(aes(color = onTime_Probability, size = onTime_Probability, shape = factor(AirLine))) +  scale_colour_gradient(low = "purple")
+ggplotly(bsc)
+```
+
+
+### 4.2 Density Chart
+
+The Density Chart below support our analyses. The Alaskan Airlines has better Ontime performance for almost all the destinations.
+```{r}
+dPlot <- qplot(onTime_Probability, data=tidyData, geom='density', color=AirLine, xlim =c(0.50, 1)) + facet_grid(Destination ~.)
+ggplotly(dPlot)
+```
+
+
+
