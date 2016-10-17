@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<Book1>
+		<Title>Applied predictive modeling</Title>
+		<ISBN10>1461468485</ISBN10>
+		<Publisher>Springer</Publisher>
+		<Author>Max Kuhn, Kjell Johnson</Author>
+		<Language>English</Language>
+		<Amazon><![CDATA[https://www.amazon.com/dp/1461468485/ref=wl_it_dp_o_pC_nS_ttl?_encoding=UTF8&colid=2GK20EP3VV62B&coliid=IMRUQCR4QJW7X]]></Amazon>
+		<Image>https://images-na.ssl-images-amazon.com/images/I/41S7RyAnsLL._SX313_BO1,204,203,200_.jpg</Image>
+	</Book1>
+	<Book2>
+		<Title>Happiness: a guide to developing life's most important skill</Title>
+		<ISBN10>316167258</ISBN10>
+		<Publisher>Little Brown</Publisher>
+		<Author>Matthieu Ricard, Daniel Goleman</Author>
+		<Language>English</Language>
+		<Amazon><![CDATA[https://www.amazon.com/dp/0316167258/ref=wl_it_dp_o_pC_nS_ttl?_encoding=UTF8&colid=I8V107CIHDEP&coliid=I2FMJ8UZI40LY5]]></Amazon>
+		<Image>https://images-na.ssl-images-amazon.com/images/I/41-A2ZDV9bL._SX319_BO1,204,203,200_.jpg</Image>
+	</Book2>
+	<Book3>
+		<Title>Why we believe what we believe: our biological need for meaning, spirituality, and truth</Title>
+		<ISBN10>743274970</ISBN10>
+		<Publisher>Free Press</Publisher>
+		<Author>Andrew B. Newberg, Mark Robert Waldman</Author>
+		<Language>English</Language>
+		<Amazon><![CDATA[https://www.amazon.com/Why-Believe-What-Uncovering-Spirituality/dp/0743274970/ref=sr_1_1?s=books&ie=UTF8&qid=1476673722&sr=1-1&keywords=why+we+believe+what+we+believe]]></Amazon>
+		<Image>https://images-na.ssl-images-amazon.com/images/I/51K-nu%2BX5hL._SX328_BO1,204,203,200_.jpg</Image>
+	</Book3>
+</root>

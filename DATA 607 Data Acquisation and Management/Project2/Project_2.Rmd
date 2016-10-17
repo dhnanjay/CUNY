@@ -1,0 +1,79 @@
+---
+title: "Tidying and Transforming Data"
+author: "<p><img class='dj'  data-pin-nopin='true'> Dhananjay Kumar</p>"
+date: "September 28, 2016"
+output:
+  html_document:
+   theme: flatly
+   highlight: pygments
+   toc: true
+   toc_float: true
+   css: dj.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyr)
+library(readr)
+library(ggplot2)
+library(plotly)
+library(knitr)
+library(magrittr)
+library(sqldf)
+library(stringr)
+library(tcltk)
+library(DT)
+```
+
+## Assignment
+
+**1.** Create a .CSV file that includes the Airline information .
+
+**2.** Read the information from your .CSV file into R, and use tidyr and dplyr as needed to tidy and transform your data.
+
+**3.** Perform analysis to compare the arrival delays for the two airlines.
+
+## Load Data
+
+### 1.1 Load CSV file
+Load CSV file from desktop and validate it using Head.
+```{r warning=FALSE}
+untidyData <-  read.csv(paste0("C:/data/China.csv"), header=T)
+datatable(untidyData)
+```
+
+
+
+## Tidy Data 
+
+### 2.1 Tidy Data - I
+
+Lets tidy the untidy dataset by gathering the Years in one Column : **Year**.
+
+```{r warning=FALSE}
+untidyData <- untidyData %>% gather(Year, Value, X2000:X2014)
+untidyData$Series.Code <- NULL
+head(untidyData)
+```
+
+### 2.2 Remove unwanted Columns
+
+Since this data is for China, there is no need to mention that in an explicit Column.
+
+```{r}
+untidyData$Country.Name <- NULL
+untidyData$Country.Code <- NULL
+```
+
+### 2.3 Tidy Data - II
+
+Lets create column names from Categorical data **Series.Name**. This will make our untidy dataset to Tidy dataset as all varibales will be moved to Columns and  Observations into Rows.
+
+```{r warning=FALSE}
+tidyData <- untidyData %>% spread(Series.Name, Value)
+datatable(tidyData)
+```
+
+
+
