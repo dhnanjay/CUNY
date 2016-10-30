@@ -1,0 +1,74 @@
+---
+title: "Web APIs"
+author: "Dhananjay Kumar"
+date: "October 30, 2016"
+output:
+  html_document:
+   theme: flatly
+   highlight: pygments
+   css: dj.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(jsonlite)
+library(dplyr)
+library(knitr)
+```
+
+## Assignment Summary
+
+Our task  for the week 9 assignment is to choose one of the New York Times APIs, construct an interface in R to read in the JSON data, and
+transform it to an R dataframe.
+
+For this assignment I opted for the Best Seller Books API from New York Times.
+
+## Load URL
+
+Lets load the NYT API and parse it R. For parsing json api, I am using **JSONLITE** Library.
+
+```{r warning=FALSE}
+json_file <- "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=5fe82da6fd5740a7a90d749aa086a9b5"
+json_data <- fromJSON(paste(readLines(json_file), collapse=""))
+```
+
+## Create Data frame 
+
+Create Data frame for the data retreived in the above step. Please not that I am using **list()** function of DPLYR package to append data when parsed through FOR Loop.
+```{r warning=FALSE}
+listTab <- list()
+rankTab <- list()
+dataBestSeller <- length(json_data$results)
+rankData <- length(json_data$results)
+for (i in 1:length(json_data$results)) {
+  rankData$Title <- dataBestSeller$Title <- gsub( "#", "", json_data$results$title[i])
+  dataBestSeller$Description <- json_data$results$description[i]
+  dataBestSeller$Contributor <- json_data$results$contributor[i]
+  dataBestSeller$Author <- json_data$results$author[i]
+  dataBestSeller$Publisher <- json_data$results$publisher[i]
+  dataBestSeller$isbn10 <- json_data$results$isbns[[i]]$isbn10
+  
+#  rankData$Title <- gsub( "#", "", json_data$results$title[i])
+  rankData$Rank <- json_data$results$ranks_history[[i]]$rank
+  rankData$Weeks_On_List <- json_data$results$ranks_history[[i]]$weeks_on_list
+  rankData$ISBN10 <- json_data$results$ranks_history[[i]]$primary_isbn10
+  rankData$ListName <- json_data$results$ranks_history[[i]]$list_name
+  rankData$Publication_Date <- json_data$results$ranks_history[[i]]$published_date
+  rankData$Best_Seller_Date <- json_data$results$ranks_history[[i]]$bestsellers_date
+  
+  dfBooks <- data.frame(dataBestSeller)
+  rankBooks <- data.frame(rankData)
+  
+  listTab[[i]] <- dfBooks
+  rankTab[[i]] <- rankBooks
+}
+ opBooks <- bind_rows(listTab)
+ opBooks$X11L <- NULL
+ 
+ opRank <- bind_rows(rankTab)
+ opRank$X11L <- NULL
+ 
+ kable(opBooks)
+# kable(opRank)
+```
+
