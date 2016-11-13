@@ -1,0 +1,100 @@
+---
+title: "Week10"
+author: "Dhananjay Kumar"
+date: "November 6, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(RTextTools)
+library(tm)
+library(SnowballC)
+library(dplyr)
+library(stringr)
+library(readr)
+library(wordcloud)
+library(knitr)
+```
+
+## Week 10 Assignment: Document Classification
+
+It can be useful to be able to classify new "test" documents using already classified "training" documents.  A common example is using a corpus of labeled spam and ham (non-spam) e-mails to predict whether or not a new document is spam.  
+
+For this project, you can start with a spam/ham dataset, then predict the class of new documents (either withheld from the training dataset or from another source such as your own spam folder).   One example corpus:  <https://spamassassin.apache.org/publiccorpus/>
+
+For this assignment, I have referred to the following blog: <http://www.r-bloggers.com/classifying-emails-as-spam-or-ham-using-rtexttools/>
+
+I have created two corpus vectors, one for Ham Data and another one for Spam Data. To identify these two, I have added metadata 1 as Spam and 0 as Ham.
+
+```{r cars}
+spamData <- Corpus(DirSource("./spam_2", pattern = "[[:digit:]]"))
+hamData <- Corpus(DirSource("./easy_ham_2", pattern = "[[:digit:]]"))
+meta(spamData, "ind") <- 1
+meta(hamData, "ind") <- 0
+meta
+spamhamCorpus <- c(hamData, spamData)
+```
+
+## Document Term Matrix
+
+I have created a document term matrix and have elimated sparse term. I wanted to remove sparse terms that are more sparse than 90% of the all the terms available, hence I chose **0.9 ** in the removeSparseTerms function.
+NOTE: Sparsity is smaller as it approaches 1.0. and it cannot take values of 0 or 1.0, only values in between.
+
+```{r }
+# Create Document Term Matrix
+dtMatrix <- DocumentTermMatrix(spamhamCorpus)
+# Unwated Sparse Terms
+dtMatrix <- removeSparseTerms(dtMatrix, 0.9)
+```
+
+## Train Data
+
+For training data, I used 80:20 rule i.e. I used 80% of the Corpus data for training and remaining 20% for testing the trained model. For modeling, I used three models: SVM, Random Forest Model & Maximum Entropy.
+
+
+```{r}
+spamLabels <- unlist(meta(spamhamCorpus))
+
+# Train data (80:20) 
+container <- create_container(dtMatrix, labels = spamLabels, trainSize = 1:round(length(spamhamCorpus)*.8), testSize = round(length(spamhamCorpus)*.8+1):length(spamhamCorpus), virgin = FALSE)
+
+# SVM model
+svmModel <- train_model(container, "SVM")
+
+# RFM
+treeModel <- train_model(container, "TREE")
+
+#Entropy
+maxentModel <- train_model(container, "MAXENT")
+
+# Run class. for SVM
+svmOut <- classify_model(container, svmModel)
+
+# Run class. for RFM
+treeOut <- classify_model(container, treeModel)
+
+# Run class. for Entropy
+maxentOut <- classify_model(container, maxentModel)
+```
+
+##Outcome
+
+As per the test I ran (as shown below), the outcome Random Forest Model was substantially different than the outcomes of SVM and Maximum Entropy. From the test it seems that SVM and Random Entropy were relatively more accurate than RFM.
+```{r}
+
+labelsOut <- data.frame(correct_label = spamLabels[round(1+length(spamhamCorpus)*.8):length(spamhamCorpus)], svm = svmOut[, 1], tree = treeOut[, 1],  maxent = maxentOut[, 1], stringsAsFactors = FALSE)
+
+# SVM Model Output
+table(labelsOut[, 1] == labelsOut[, 2])
+prop.table(table(labelsOut[, 1] == labelsOut[, 2]))
+
+# Randome Forest Model Output
+table(labelsOut[, 1] == labelsOut[, 3])
+prop.table(table(labelsOut[, 1] == labelsOut[, 3]))
+
+# Maximum Entropy Model Output
+table(labelsOut[, 1] == labelsOut[, 4])
+prop.table(table(labelsOut[, 1] == labelsOut[, 4]))
+```
+
