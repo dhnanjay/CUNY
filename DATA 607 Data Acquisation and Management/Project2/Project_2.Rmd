@@ -75,5 +75,14 @@ tidyData <- untidyData %>% spread(Series.Name, Value)
 datatable(tidyData)
 ```
 
+### 2.3 Summarize
+
+```{r warning=FALSE}
+chinaGDP <- data.frame(tidyData$Year, tidyData$`GDP (current US$)`, tidyData$`GDP growth (annual %)`, tidyData$`Agriculture, value added (% of GDP)`)
+mutate(chinaGDP, Agriculture_Current = tidyData$`GDP (current US$)`*(tidyData$`Agriculture, value added (% of GDP)`/100))
+colnames(chinaGDP) <- c("GDP-Current", "GDP-Growth","Agriculture as % of GDP")
+
+datatable(chinaGDP)
+```
 
 

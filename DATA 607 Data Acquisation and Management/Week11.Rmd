@@ -1,0 +1,96 @@
+---
+title: "Week11"
+author: "Dhananjay Kumar"
+date: "November 17, 2016"
+output: html_document
+---
+
+## Project 4 : NoSQL Migration
+
+For this assignment I have used MySQL as RDBMS database and MongoDB as NoSQLdatabase. I would be migrating tables in **Flights** schema from MySQL to MongoDB.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(jsonlite)
+library(RMySQL)
+library(dbConnect)
+library(mongolite)
+```
+
+
+## RDBMS vs NoSQL(MongoDB)
+
+![](5.rdbms.png)
+
+## Extract data from MySQL
+
+For extrtacting data from MySQL , I am using RMySQL and DBConnect libraries. Below you can see the list of tables under Flights schema in MySQL.
+
+```{r cars}
+mydb = dbConnect(MySQL(), user='root', password ='admin', dbname='flights', host='localhost')
+dbListTables(mydb)
+```
+
+## NoSQL DB
+
+For using MongoDB within RStudio, I am using **Mongolite** library. Please note that if you are using a windows environment (OS), you need to create a directory /data/db and make it writable (use C:/data/db on Windows). Below we will migrate each table listed above to MongoDB database.
+
+### Airlines
+
+Migrate Airlines data to MongoDB.
+
+```{r pressure, echo=FALSE}
+Airlines <- dbGetQuery(mydb, "SELECT * FROM Airlines;")
+nrow(Airlines)
+
+noSQLDB <- mongo(collection = "Flights")
+noSQLDB$insert(Airlines)
+noSQLDB$count()
+```
+
+### Airport
+
+Migrate Airport data to MongoDB.
+
+```{r}
+Airports <- dbGetQuery(mydb, "SELECT * FROM Airports;")
+nrow(Airports)
+noSQLDB$insert(Airports)
+
+```
+
+
+### Flights
+
+Migrate Flights data to MongoDB.
+
+```{r}
+Flights <- dbGetQuery(mydb, "SELECT * FROM Flights;")
+nrow(Flights)
+noSQLDB$insert(Flights)
+
+```
+
+### Planes
+
+Migrate Planes data to MongoDB.
+
+```{r}
+Planes <- dbGetQuery(mydb, "SELECT * FROM Planes;")
+nrow(Planes)
+noSQLDB$insert(Planes)
+
+```
+
+### Weather
+
+Migrate Weather data to MongoDB. Since this is the last table that we need to migrate to MongoDB, we need to close MySQL connection once the migration is completed.
+
+```{r}
+Weather <- dbGetQuery(mydb, "SELECT * FROM Weather;")
+nrow(Weather)
+noSQLDB$insert(Weather)
+# Disconnect from the database
+dbDisconnect(mydb)
+```
+
