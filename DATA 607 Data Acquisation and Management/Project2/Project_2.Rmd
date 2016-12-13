@@ -32,9 +32,11 @@ library(DT)
 
 **2.** Read the information from your .CSV file into R, and use tidyr and dplyr as needed to tidy and transform your data.
 
-**3.** Perform analysis to compare the arrival delays for the two airlines.
+
 
 ## Load Data
+
+## China 
 
 ### 1.1 Load CSV file
 Load CSV file from desktop and validate it using Head.
@@ -75,14 +77,37 @@ tidyData <- untidyData %>% spread(Series.Name, Value)
 datatable(tidyData)
 ```
 
-### 2.3 Summarize
+### 2.3 Calculate Value of Agriculture in USD
 
 ```{r warning=FALSE}
-chinaGDP <- data.frame(tidyData$Year, tidyData$`GDP (current US$)`, tidyData$`GDP growth (annual %)`, tidyData$`Agriculture, value added (% of GDP)`)
-mutate(chinaGDP, Agriculture_Current = tidyData$`GDP (current US$)`*(tidyData$`Agriculture, value added (% of GDP)`/100))
-colnames(chinaGDP) <- c("GDP-Current", "GDP-Growth","Agriculture as % of GDP")
-
+chinaGDP <- data.frame(as.numeric(gsub( "X", "", tidyData$Year)), as.numeric(tidyData$`GDP (current US$)`), as.numeric(tidyData$`GDP growth (annual %)`) , as.numeric(tidyData$`Agriculture, value added (% of GDP)`))
+colnames(chinaGDP) <- c("Year","GDP-Current", "GDP-Growth","Agriculture_as_%_of_GDP")
+chinaGDP <- mutate(chinaGDP, Agriculture_in_USD =`GDP-Current`*`Agriculture_as_%_of_GDP`/100 )
 datatable(chinaGDP)
 ```
+
+### 2.4 Analyses
+```{r}
+
+ggplotly(ggplot(chinaGDP, aes(x=`GDP-Growth`, y=Year)) + geom_point() +  geom_smooth() +  labs(title="Year vs GDP"))
+```
+
+As seen in the above plot, the best GDP growth in terms of percentage for China happened to be in the interval 2005 - 2010.
+
+```{r}
+
+ggplotly(ggplot(chinaGDP, aes(x=`Agriculture_as_%_of_GDP`, y=Year)) + geom_point() +  geom_smooth() + labs(title="Year vs Agriculture GDP"))
+```
+
+As seen in the above plot, the growth of Agriculture GDP got significantly reduced as years passed by which confirms the theory that China is pursuic the policy of aggresive industrialization.
+
+```{r}
+ggplotly(ggplot(chinaGDP, aes(x=`Agriculture_as_%_of_GDP`, y=`GDP-Growth`)) + geom_point() +  geom_smooth() + labs(title="GDP vs Agriculture GDP"))
+```
+
+The above chart further confirms the conclusion of second chart which is the Agriculture GDP growth has relatively reduced in the recent past.From Total GDP growth of 7 % to 10% the AGriculture GDP gas grown as well.
+
+
+
 
 
