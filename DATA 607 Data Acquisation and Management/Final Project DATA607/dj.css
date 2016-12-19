@@ -1,0 +1,79 @@
+h3 {
+	margin: 1em 0 0.5em 0;
+	font-weight: normal;
+	position: relative;
+	text-shadow: 0 -1px rgba(0,0,0,0.6);
+	font-size: 20px;
+	background: #355681;
+	background: rgba(53,86,129, 0.8);
+	border: 1px solid #fff;
+	padding: 5px 15px;
+	color: white;
+	border-radius: 0 10px 0 10px;
+	box-shadow: inset 0 0 5px rgba(53,86,129, 0.5);
+}
+
+.dj {
+   background-image:url('rsz_dhananjay.jpg');
+   border-radius: 50%;
+   text-align: left;
+    height: 50px;
+    width: 50px;
+   margin-left: 2; /* If you want no margin */
+   padding:0; /*if your want to padding */
+}
+
+div.main-container {
+    max-width: 1200px;
+    opacity: 1;
+    background-color: rgba(150, 195, 186, 0);
+    background-image: linear-gradient(to left, rgb(192, 192, 170), rgba(17, 204, 238, 0.12));
+}
+
+.small-code pre code {
+  font-size: 1em;
+}
+
+h1 {
+  font-size: 30px;
+}
+h1.title {
+  font-size: 34px;
+}
+h2 {
+  font-size: 26px;
+}
+
+h4 {
+  font-size: 16px;
+}
+h5 {
+  font-size: 14px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  word-wrap: normal;
+  -moz-hyphens: none;
+}
+
+body {
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica Neue, Helvetica, Arial, sans-serif;
+  background-color:#fff;
+
+  font-weight: normal;
+  color: #404040;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+background-color: rgb(97,151,213);
+}
+
+.tocify .list-group-item {
+    border-radius: 0px;
+}
