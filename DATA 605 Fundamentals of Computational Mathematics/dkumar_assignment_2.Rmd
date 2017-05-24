@@ -1,0 +1,97 @@
+---
+title: "hw3_dkumar"
+author: "Dhananjay Kumar"
+date: "February 09, 2017"
+output: html_document
+---
+
+##  Problem set 2
+
+Matrix factorization is a very important problem. There are supercomputers built just
+to do matrix factorizations. Every second you are on an airplane, matrices are being
+factorized. Radars that track flights use a technique called Kalman filtering. At the heart
+of Kalman Filtering is a Matrix Factorization operation. Kalman Filters are solving linear
+systems of equations when they track your flight using radars.
+Write an R function to factorize a square matrix A into LU or LDU, whichever you
+prefer. Please submit your response in an R Markdown document using our class naming
+convention, E.g. LFulton_Assignment2_PS2.png
+
+### Factorization function
+
+```{r cars}
+myfactorize  <- function(A) {
+  
+  #  Array size
+  d =dim(A)[1]
+  d
+  
+  # create an identity matrix
+  y <- diag( dim(A)[1])
+  y
+  
+  # initializing parameters 
+  
+  temp = y
+  temp[2,1] <- -A[2,1]/A[1,1]
+  ltemp= temp
+  
+  # initialize the Upper elimination matrix 
+  temp= temp %*% A
+  L=ltemp
+  i=1
+  
+  # initialize the lower elimination matrix
+  L= solve(L)
+
+   # looping through the martix columns  
+  for  (j in 1:(d-i)) {
+    #y <- diag( dim(A)[1])
+    for  (i in 3:d) {
+      # check if the pivot element. no permutaion is done when pivot is 0. 
+      if (i != j) {
+        # Check if the element is zero
+        if (temp[i,j] != 0 ) {  
+          if (temp[j,j] < 0)  y[i,j] <- -temp[i,j] / temp[j,j]     
+          if (temp[j,j] > 0  )  y[i,j] <- -temp[i,j]/ temp[j,j]
+          
+          #place holder for the Uppper matrix U
+          temp= y%*%temp
+          
+          # place holder for the Lower matrix L
+          L= L %*%solve(y)
+          
+          #print(temp). Please uncomment to see all the Upper elimination matrices
+          #print(L). Please uncomment to see all the Lower elimination matrices
+
+          #reset y to the identity matrix
+          y <- diag( dim(A)[1])
+          
+        }
+        
+      }
+      
+    }
+  } 
+  print("Upper Matrix U")
+  print(temp)
+  print("Lower Matrix L")
+  print(L)
+  U=temp
+  solution <- L%*%U
+  print("Compare LU with original Matrix A. Below is the LU matrix:  ")
+  print (solution) 
+  print("Below is the original Matrix A: ")
+  print(A)
+  return(all.equal(solution,A))  
+  
+}
+```
+
+
+### Call function
+
+```{r}
+A <- matrix(c(1,2,3,1,1,1,2,0,1),nrow=3)
+myfactorize(A)
+```
+

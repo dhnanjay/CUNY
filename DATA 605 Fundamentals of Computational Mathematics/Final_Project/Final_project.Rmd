@@ -1,0 +1,320 @@
+---
+title: "Maths Project"
+author: "Dhananjay Kumar"
+date: "5/18/2017"
+output: html_document
+---
+
+
+```{r}
+# Import Libraries
+
+library(MASS)
+library(forecast)
+```
+
+
+
+##### Load data set
+```{r}
+
+train<-read.csv("train.csv")
+```
+
+#####1.Probability
+Pick one of the quantitative independent variables from the training data set (train.csv) , and define that variable as  X. Pick SalePrice as the dependent variable, and define it as Y for the next analysis. 
+```{r}
+dim(train)
+```
+In our analysis we will take LotArea as the independent variable X.
+
+Calculate as a minimum the below probabilities a through c.  Assume the small letter "x" is estimated as the 4th quartile of the X variable, and the small letter "y" is estimated as the 2d quartile of the Y variable.  Interpret the meaning of all probabilities
+```{r}
+x <- quantile(train$LotArea)["75%"]
+y <- quantile(train$SalePrice)["50%"]
+```
+
+###### a.P(X>x | Y>y)  
+This represents the probability that value of X is above the 3rd Quartile given that Y is above the 2nd Quartile. In other words this represents the probability that the LotArea is above the 3rd Quartile given that the Sale Price is above the 2nd Quartile.
+```{r}
+total<-nrow(train)
+xg_yg<-nrow(subset(train,LotArea>x & SalePrice>y))
+yg<-nrow(subset(train,SalePrice>y))
+p1<-xg_yg/total
+p2<-yg/total
+a<-p1/p2
+a
+
+```
+
+###### b.  P(X>x, Y>y)   
+This represents the probability that value of X is above the 3rd Quartile and Y is above 2nd Quartile. In other words this represents the probability that the LotArea is above the 3rd Quartile and the Sale Price is above the 2nd Quartile.
+
+```{r}
+xg<-nrow(subset(train,LotArea>x))
+yg<-nrow(subset(train,SalePrice>y))
+p3 <-xg/total
+p4<-yg/total
+b<-p3*p4
+b
+
+```
+
+###### c.P(X<x | Y>y)  
+This represents the probability that value of X is below 3rd Quartile given that Y is below 2nd Quartile. In other words this represents the probability that the LotArea is below 3rd Quartile given that the Sale Price is also below the 2nd Quartile.
+```{r}
+xl<-nrow(subset(train,LotArea<x))
+yl<-nrow(subset(train,SalePrice<y))
+p3 <-xl/total
+p4<-yl/total
+c<-p3*p4
+c
+```
+
+Does splitting the training data in this fashion make them independent? In other words, does P(X|Y)=P(X)P(Y))?   Check mathematically, and then evaluate by running a Chi Square test for association.  You might have to research this. 
+
+```{r}
+# Check P(A|B) = P(A).P(B)
+A<-xg
+B<-yg
+p6=p1/p4
+p7=p3*p4
+check<-(p6==p7)
+check
+```
+
+
+######Chi-sq test for Independence
+H0: SalesPrice and LotArea are independent
+Ha: SalesPrice and LotArea are not independent
+```{r}
+tbl = table(train$LotArea, train$SalePrice)
+chisq.test(tbl)
+```
+
+ p-value < 2.2e-16, since p value <0.05 we reject the null hypothesis.
+ 
+##### 2.Descriptive and Inferential Statistics
+
+Provide univariate descriptive statistics and appropriate plots for both variables.   Provide a scatterplot of X and Y.  Transform both variables simultaneously using Box-Cox transformations.  You might have to research this. Using the transformed variables, run a correlation analysis and interpret.  Test the hypothesis that the correlation between these variables is 0 and provide a 99% confidence interval.  Discuss the meaning of your analysis
+
+###### Summary
+```{r}
+summary(train$SalePrice)
+```
+
+
+```{r}
+summary(train$LotArea)
+```
+
+
+###### Scatter Plot
+```{r}
+plot(train$SalePrice,train$LotArea)
+```
+
+###### Histogram
+```{r}
+hist(train$SalePrice,xlab= "Sales Price", main = "Houses Sales Price")
+```
+
+```{r}
+hist(train$LotArea,xlab= "Lot Area", main = "Houses Lot Area")
+```
+
+######Box Cox transforamtion on Sales Price and LotArea
+```{r}
+lambda1 <-BoxCox.lambda(train$SalePrice)
+trans.SalesPrice<-BoxCox(train$SalePrice,lambda1)
+hist(trans.SalesPrice)
+```
+
+
+```{r}
+lambda2 <-BoxCox.lambda(train$LotArea)
+trans.LotArea<-BoxCox(train$LotArea,lambda2)
+hist(trans.LotArea)
+```
+
+###### Correlation Anaylsis
+
+Using the transformed variables, run a correlation analysis and interpret.  Test the hypothesis that the correlation between these variables is 0 and provide a 99% confidence interval.  Discuss the meaning of your analysis.
+```{r}
+# Correlation matrix
+tab<- cbind(trans.SalesPrice,trans.LotArea)
+mat<-cor(tab)
+mat
+```
+
+
+###### Test the hypothesis
+Cor-relation matrix shows there is a positive cor-relation between sales price and Lot area.
+```{r}
+cor.test(trans.SalesPrice,trans.LotArea, method = "pearson" , conf.level = 0.99)
+```
+
+The correlation test suggests that there is between transformed values of SalePrice and LotArea.
+99 % confidence interval:
+0.3306244 0.4450358
+
+#####3.Linear Algebra and Correlation
+Invert your correlation matrix. (This is known as the precision matrix and contains variance inflation factors on the diagonal.) Multiply the correlation matrix by the precision matrix, and then multiply the precision matrix by the correlation matrix.
+```{r}
+# Invert correlation matrix (precision matrix)
+inv<-solve(mat)
+inv
+```
+
+```{r}
+# Multiply the correlation matrix by the precision matrix
+matrix1 <-mat  %*% inv
+matrix1
+```
+
+```{r}
+# Then multiply the precision matrix by the correlation matrix
+matrix2<- inv %*% mat
+matrix2
+```
+
+#####4.Calculus-Based Probability & Statistics
+For your non-transformed independent variable, location shift it so that the minimum value is above zero.    
+
+```{r}
+# shift Independent variable (LotArea) such that min value is > 0
+min_Lot <- min(train$LotArea,na.rm = TRUE)
+min_Lot
+```
+
+The minimum value is already greater than 0 so we need not do any shift.
+
+
+###### Density function
+Load the MASS package and run fitdistr to fit a density function of your choice.   Find the optimal value of the parameters for this distribution. 
+
+```{r}
+df <- fitdistr(train$LotArea, 'exponential')
+estimate <- df$estimate
+```
+
+Take 1000 samples from this distribution (e.g., rexp(1000, l) for an exponential).  Plot a histogram and compare it with a histogram of your non-transformed original variable
+
+
+```{r}
+Lot_sa<- rexp(1000, estimate)
+hist(Lot_sa)
+```
+
+ 
+```{r}
+# Histogram of non-trnasformed LotArea
+hist(train$LotArea)
+```
+
+comparing the histograms we see the data is still positively skewed as in the original dataset, but with the estimations, it is more spread out.
+
+##### 5.Modeling
+Build some type of regression model and submit your model to the competition board.  
+```{r}
+summary(train)
+```
+
+
+```{r}
+# removing featues having large number of NA's
+
+drops <- c("Street","Alley","Utilities","LandSlope","BsmtFinSF2","Heating",
+           "LowQualFinSF","BsmtFullBath","BsmtHalfBath","GarageYrBlt","EnclosedPorch",
+           "3SsnPorch","ScreenPorch","PoolArea","PoolQC","Fence","MiscFeature",
+           "MiscVal","YrSold","SaleType","SaleCondition","GarageQual","GarageCond",
+           "LotFrontage","GarageType","GarageFinish","FireplaceQu","YearRemodAdd")
+new_train<-train[ , !(names(train) %in% drops)]
+
+new_train<-na.omit(new_train)
+dim(new_train)
+```
+
+```{r}
+str(new_train)
+```
+
+###### Fit the multilinear regression model
+
+```{r}
+attach(new_train)
+
+```
+
+
+
+
+
+```{r}
+
+drops1 <- c("Street","Alley","Utilities","LandSlope","BsmtFinSF2","Heating",
+           "LowQualFinSF","BsmtFullBath","BsmtHalfBath","GarageYrBlt","EnclosedPorch",
+           "3SsnPorch","ScreenPorch","PoolArea","PoolQC","Fence","MiscFeature",
+           "MiscVal","YrSold","SaleType","SaleCondition","GarageQual","GarageCond",
+           "LotFrontage","GarageType","GarageFinish","FireplaceQu","YearRemodAdd",
+           "Exterior1st","BsmtFinType1","RoofStyle","Exterior2nd",        "BsmtFinType2","HeatingQC","OpenPorchSF","Foundation","Electrical","WoodDeckSF", "X3SsnPorch","CentralAir","PavedDrive","MoSold","LotShape","GarageCars","HalfBath", "ExterCond","Id")
+new_train<-train[ , !(names(train) %in% drops1)]
+f11<-lm(SalePrice ~ .,data =new_train)
+summary(f11)
+
+
+```
+##### Analysis of Variance Table
+
+```{r}
+anova(f11)
+```
+
+
+
+```{r}
+plot(f11$residuals)
+```
+
+
+#### Analysis
+
+We used multi linear regression model to predict the house prices. We employed Stepwise Backward elimination technique to get the significant features. As per the above summary, we got an R-squared value of 0.9087 which means our model is able to explain about 90% variability of the response data. As seen, most of the explanatory variables are significant (p-value < 0.05).
+
+
+```{r}
+test <- read.csv(file="test.csv",head=TRUE,sep=",")
+new_test<-test[ , !(names(test) %in% drops1)]
+#new_test<-test[,'Id']
+result_data <- predict(f11, new_test)
+result_data<-cbind(test$Id,result_data)
+colnames(result_data) <- c("Id","SalePrice")
+#View(result_data)
+```
+
+
+```{r}
+result_data<-data.frame(result_data)
+
+
+for (i in 1:nrow(result_data)){
+  if (is.na(result_data[i,2]))
+   result_data[i,2]<-mean(result_data[,2], na.rm = TRUE) 
+  
+}
+  
+
+
+```
+
+
+```{r}
+write.csv(result_data,"final.csv")
+```
+
+
+#### Kaggle Score
+
+My Kaggle user name is **dhnanjay** and my score is **0.20060**
+
+![](KScore.png)
