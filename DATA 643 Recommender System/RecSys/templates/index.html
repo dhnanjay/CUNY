@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommender System</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<h2 style="text-align: center;"><strong>Recommeder System</strong></h2>
+<h2 style="text-align: center;"><strong>Data 643 -&nbsp; Project 2 -&nbsp; Collaborative Filtering</strong></h2>
+<p>&nbsp;</p>
+<p>For my assignment/Project for CUNY Data 643 class, I am using movielens dataset taken from following url:</p>
+<p><a href="https://www.kaggle.com/prajitdatta/movielens-100k-dataset" target="_blank">Kaggle movielens 100k dataset</a></p>
+<p>The project is divided in two parts, the first part deals with User-User Collaborative Filtering and the second part delas with Item-Item Collaborative Filtering.</p>
+<p>&nbsp;</p>
+<p><span style="text-decoration: underline;"><strong>User-User Collaborative Filtering:</strong></span></p>
+<p>User-User Collaborative filtering in general filters information by using the recommendations of other people. It is based on the idea that people who agreed in their evaluation of certain items in the past are likely to agree again in the future. A person who wants to see a movie for example, might ask for recommendations from friends. The recommendations of some friends who have similar interests are trusted more than recommendations from others. It is on this principle that a user based CF works. The friend here is another user which has a similar taste and hence her/his recommendations carry more weight than others. If we extrapolate this concept, then we can build a Recommendation System based on similarity. But here the questio arise, how do we find and define similarity ?</p>
+<p>We can find similarity between two users by using Euclidean Distance Score and Pearson Correlation Score. For the current demonstration we will limit our discusiion to Pearson Correlation Score.</p>
+<p>Pearson Correlation Score is a way to determine the similarity between people's interests . The correlation coefficient is a measure of how well two sets of data fit on a straight line. The formula for this is more complicated than the Euclidean distance score, but it tends to give better results in situations where the data isn't well normalized&mdash;for example, if critics' movie rankings are routinely more harsh than average.</p>
+<p>Pearson's correlation coefficient when applied to a <a title="Statistical population" href="https://en.wikipedia.org/wiki/Statistical_population">population</a> is commonly represented by the Greek letter <em>&rho;</em> (rho) and may be referred to as the <em>population correlation coefficient</em> or the <em>population Pearson correlation coefficient</em>. The formula for <em>&rho;</em><sup id="cite_ref-RealCorBasic_5-0" class="reference"><a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient#cite_note-RealCorBasic-5">[5]</a></sup> is:</p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f76ccfa7c2ed7f5b085115086107bbe25d329cec" alt="Pearson's correlation coefficient" width="168" height="54" /></p>
+<p>&nbsp;</p>
+<p>where:</p>
+<ul>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"> cov {\displaystyle \operatorname {cov} } </span><img class="mwe-math-fallback-image-inline" style="vertical-align: -0.338ex; width: 3.454ex; height: 1.676ex;" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b35a5e29cef19ef8b54ae74d92322f3df6dbbea2" alt="\operatorname {cov} " /></span> is the <a title="Covariance" href="https://en.wikipedia.org/wiki/Covariance">covariance</a></li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"> &sigma; X {\displaystyle \sigma _{X}} </span><img class="mwe-math-fallback-image-inline" style="vertical-align: -0.671ex; width: 2.978ex; height: 2.009ex;" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/380c53c60c8301a5c80924b66363d831dfa80b9b" alt="\sigma _{X}" /></span> is the <a title="Standard deviation" href="https://en.wikipedia.org/wiki/Standard_deviation">standard deviation</a> of <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"> X {\displaystyle X} </span><img class="mwe-math-fallback-image-inline" style="vertical-align: -0.338ex; width: 1.99ex; height: 2.176ex;" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/68baa052181f707c662844a465bfeeb135e82bab" alt="X" /></span></li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"> &sigma; Y {\displaystyle \sigma _{Y}} </span><img class="mwe-math-fallback-image-inline" style="vertical-align: -0.671ex; width: 2.831ex; height: 2.009ex;" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6a9fb889441f514e155f65e77dc5b7c7a5a84f35" alt=" \sigma_Y " /></span> is the standard deviation of <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"> Y {\displaystyle Y} </span><img class="mwe-math-fallback-image-inline" style="vertical-align: -0.338ex; width: 1.784ex; height: 2.176ex;" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/961d67d6b454b4df2301ac571808a3538b3a6d3f" alt="Y" /></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; source:wikipedia</li>
+</ul>
+<p>&nbsp;</p>
+<p>Lets test Recommendation based on Person's Correlation by rating movies below:</p>
+<p>&nbsp;</p>
+<p>Rate atleast ten movies to get a list of recommendended movies:</p>
+<p>&nbsp;</p>
+ <form action="." method="POST">
+<table style="height: 168px;" width="98%">
+<tbody>
+<tr>
+<td >Toy Story &nbsp;<select name="1">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+<td>GoldenEye &nbsp;<select name="2">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+<td>Four Rooms  &nbsp;<select name="3">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+<td>Get Shorty &nbsp;<select name="4">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+</tr>
+<tr>
+<td>Copycat &nbsp;<select name="5">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+<td>Shanghai Triad &nbsp;<select name="6">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+<td id="1">Twelve Monkeys &nbsp;<select name="7">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+<td>Babe &nbsp;<select name="8">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+</tr>
+<tr>
+<td>Dead Man Walking &nbsp;<select name="9">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+<td>Richard III &nbsp;<select name="10">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+<td id="1">Seven (Se7en) &nbsp; <select name="11">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+<td>Usual Suspects &nbsp;<select name="12">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+</tr>
+<tr>
+<td>Mighty Aphrodite &nbsp;<select name="13">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+<td>Postino, Il &nbsp;<select name="14">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+<td id="1">Mr. Holland's Opus <select name="15">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+<td>French Twist &nbsp;<select name="16">
+<option value=" "></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></td>
+</tr>
+</tbody>
+</table>
+<br>
+
+        <input type="submit" name="my-form" value="Get Recommendations">
+ </form>
+<br>
+<p> Users with similar ratings (based on Pearson Similarity): {{ topMatch }}</p>
+<br>
+<p>
+    Your top 5 movie recommendations are :
+</p>
+<table>
+<tbody>
+<tr>
+<td><img src=' {{ p_url1 }} '></td>
+<td>{{ title1 }}</td>
+<td>{{ Rating1 }}</td>
+<td>{{ overview1 }}</td>
+<td>{{ date1 }}</td>
+</tr>
+<tr>
+<td><img src=' {{ p_url2 }} '></td>
+<td>{{ title2 }}</td>
+<td>{{ Rating2 }}</td>
+<td>{{ overview2 }}</td>
+<td>{{ date2 }}</td>
+</tr>
+<tr>
+<td><img src=' {{ p_url3 }} '></td>
+<td>{{ title3 }}</td>
+<td>{{ Rating3 }}</td>
+<td>{{ overview3 }}</td>
+<td>{{ date3 }}</td>
+</tr>
+<tr>
+<td><img src=' {{ p_url4 }} '></td>
+<td>{{ title4 }}</td>
+<td>{{ Rating4 }}</td>
+<td>{{ overview4 }}</td>
+<td>{{ date4 }}</td>
+</tr>
+<tr>
+<td><img src=' {{ p_url5 }} '></td>
+<td>{{ title5 }}</td>
+<td>{{ Rating5 }}</td>
+<td>{{ overview5 }}</td>
+<td>{{ date5 }}</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><span style="text-decoration: underline;"><strong>Item-Item Collaborative Filtering:</strong></span> Item based CF is very similar to User based CF but in place of user, we consider item (here movies) for our recoomendations. For example, for someone who9 has seen Harry Potter 1 movie, there is inherent great chance that the said person might be very interested in watching Harry Potter 2, provided he rated Harry Potter 1 above average. So in this case instead of finding similarity with other users, we will find similarity with the item itself. For determining similarity we can use Pearson's Correlation.<strong><br /></strong></p>
+<p>&nbsp;</p>
+<p>The below recommendations are based on the user inputs. For Item-Item CF, we have considered the highest rated movie which the user has rated in the above section:</p>
+<p>&nbsp;</p>
+<p>Top 5 Movie Recommendation based on User Highest Rated Movie : </p>
+<p>{{ itemRec }}</p>
+</body>
+</html>
