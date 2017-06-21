@@ -1,0 +1,37 @@
+---
+title: "DATA 643 - Recommender Systems [ Discussion 1] "
+author: "Dhananjay Kumar"
+date: "6/18/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Netflix Recommender System
+
+Netflix is all about choice: what to watch, when to watch, and where to watch, compared to a conventional TV broadcast systems. But humans are surprisingly bad at choosing between many options, quickly getting overwhelmed and thus making poor choices. At the same time, a benefit of Internet TV such as Netflix is that it can carry videos from a broader catalog appealing to a wide range of demographics and tastes, and including niche titles of interest only to relatively small groups of users.
+Consumer research suggests that a typical Netflix member loses interest after perhaps 60 to 90 seconds of choosing, having reviewed 10 to 20 titles on one or two screens. The user either finds something of interest or the risk of the user abandoning Netflix increases substantially. It is therefore of utmost importance for Netflix to ensure that on the first two screens the user should must find something compelling to view, and will understand why it might be of interest.
+
+Historically, the Netflix recommendation problem has been thought of as equivalent to the problem of predicting the number of stars that a person would rate a video after watching it, on a scale from 1 to 5. Initially Netflix did rely on such algorithms when their main business was shipping DVDs by mail. But in the contemporary world of live HD streaming such Algorithms do not make the cut.
+
+Now, Netflix recommender system consists of a variety of algorithms that collectively define the Netflix experience, most of which come together on the Netflix homepage. The below mentioned are two of the several Algorithms used to make Recommendations.
+
+
+### 2.1. Personalized Video Ranker: PVR
+
+![](https://image.slidesharecdn.com/recommendationatnetflixscalepublic-131013180315-phpapp01/95/recommendation-at-netflix-scale-8-638.jpg?cb=1381772151) 
+
+
+There are typically about 40 rows on each homepage (depending on the capabilities of the device), and up to 75 videos per row; these numbers vary somewhat across devices because of hardware and user experience considerations. As its name suggests, this algorithm orders the entire catalog of videos (or subsets selected by genre or other filtering) for each member profile in a personalized way. The resulting ordering is used to select the order of the videos in genre and other rows, and is the reason why the same genre row shown to different members often has completely different videos. Because Netflix uses PVR so widely, it must be good at general- purpose relative rankings throughout the entire catalog; this limits how personalized it can actually be.
+
+
+### 2.2 Top-N Video Ranker
+
+![](https://cdn-images-1.medium.com/max/2000/1*N9dI80z_wmodU2KAXUukIQ.png)
+
+Netflix also have a Top N video ranker that produces the recommendations in the Top Picks row shown above. The goal of this algorithm is to find the best few personalized recommendations in the entire catalog for each member, that is, focusing only on the head of the ranking, a freedom that PVR does not have because it gets used to rank arbitrary subsets of the catalog. Accordingly, the Top N ranker Alogorithm is optimized and evaluated using metrics and algorithms that look only at the head of the catalog ranking that the algorithm produces, rather than at the ranking for the entire catalog (as is the case with PVR). Otherwise the Top N ranker and PVR share similar attributes, for example, combining personalization with popularity, and identifying and incorporating viewing trends over different time windows ranging from a day to a year.
+
+
+
