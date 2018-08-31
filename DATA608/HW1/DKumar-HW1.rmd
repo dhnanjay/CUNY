@@ -1,10 +1,14 @@
 ---
 title: "DATA608 HomeWork 1"
 author: "Dhananjay Kumar"
+date: Aug, 31, 2018
 output:
   html_document: default
   html_notebook: default
   pdf_document: default
+
+
+
 ---
 
 ### Principles of Data Visualization and Introduction to ggplot2
@@ -14,7 +18,7 @@ output:
 library(dplyr)
 library(ggplot2)
 library(scales)
-
+library(plotly)
 # Turn off scientific notation
 options(scipen=999)
 ```
@@ -61,13 +65,13 @@ knitr::kable(group_by(inc, Industry) %>% summarize(Count=n()) %>% arrange(desc(C
 
 Create a graph that shows the distribution of companies in the dataset by State (ie how many are in each state). There are a lot of States, so consider which axis you should use. This visualization is ultimately going to be consumed on a 'portrait' oriented screen (ie taller than wide), which should further guide your layout choices.
 
-```{r fig.width=10,fig.height=11}
+```{r fig.width=10,fig.height=11, warning=FALSE}
 # Get a list of counts by state
 stateCount <- group_by(inc, State) %>%
   summarize(Count=n())
 
 # Plot results
-ggplot(data = stateCount, aes(x = State, y = Count)) + 
+p1 <- ggplot(data = stateCount, aes(x = State, y = Count)) + 
   geom_bar(stat="identity", fill="#CCCCCC") + 
   geom_text(aes(label=Count), hjust=-0.2, vjust=0.4, color="#555555") +
   scale_x_discrete(limits = rev(levels(stateCount$State))) +
@@ -77,6 +81,7 @@ ggplot(data = stateCount, aes(x = State, y = Count)) +
         axis.ticks = element_blank(),
         axis.text.x = element_blank(),
         axis.text.y = element_text(margin = margin(r=-30)))
+ggplotly(p1)
 ```
 
 Decision points:
@@ -114,7 +119,7 @@ Rather than discarding a few large outliers, which skew averages, below plots di
 
 ```{r fig.width=10,fig.height=11}
 # Plot
-ggplot(aes(x=Industry, y=Employees), data = nyInd) + 
+p2 <- ggplot(aes(x=Industry, y=Employees), data = nyInd) + 
   stat_boxplot(geom ='errorbar') +
   geom_boxplot() + 
   coord_cartesian(ylim = c(0,1200)) + 
@@ -123,6 +128,7 @@ ggplot(aes(x=Industry, y=Employees), data = nyInd) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust=0.3),
         axis.ticks.x = element_blank(),
         panel.grid.minor.y = element_blank())
+ggplotly(p2)
 ```
 
 **\*The following companies are not displayed on above plot, but are included in industry representation:**
@@ -146,7 +152,7 @@ nyIndSum <- group_by(nyInd, Industry) %>%
   summarise(Median = median(Employees), TotalEmp = sum(Employees), Count = n())
 
 # Plot
-ggplot(aes(x = Industry, y = Median, size = Count, color = log(TotalEmp)), 
+p3 <- ggplot(aes(x = Industry, y = Median, size = Count, color = log(TotalEmp)), 
        data = nyIndSum) + 
   geom_point(show.legend = FALSE) +
   scale_size(range = c(0, 30)) +
@@ -158,7 +164,7 @@ ggplot(aes(x = Industry, y = Median, size = Count, color = log(TotalEmp)),
         panel.grid.major = element_line(color = "#CCCCCC"),
         panel.background = element_blank(),
         panel.grid.minor.x = element_blank())
-
+ggplotly(p3)
 ```
 
 ## Question 3
@@ -176,7 +182,7 @@ revenue <- select(inc, Industry, Revenue, Employees) %>%
   mutate(RevEmployee = TotalRev / TotalEmp)
 
 # Plot results
-ggplot(data = revenue, aes(x = reorder(Industry, RevEmployee), y = RevEmployee)) + 
+p4 <- ggplot(data = revenue, aes(x = reorder(Industry, RevEmployee), y = RevEmployee)) + 
   geom_bar(stat="identity", fill="#184489") +
   geom_text(data = filter(revenue, RevEmployee>150000),
             aes(x = Industry, y = RevEmployee, label=dollar_format()(RevEmployee)), 
@@ -190,6 +196,7 @@ ggplot(data = revenue, aes(x = reorder(Industry, RevEmployee), y = RevEmployee))
         axis.ticks = element_blank(),
         axis.text.x = element_blank(),
         axis.text.y = element_text(size = 14, margin = margin(r=-20)))
+ggplotly(p4)
 ```
 
 Decision points:
