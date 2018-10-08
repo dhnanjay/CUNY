@@ -73,8 +73,8 @@ def createDummies(df,target='Survived',dummies=10):
 def rescaleFeatures(df, ignore=['Survived', 'PassengerId'], threshold=9):
     """
     This function will rescale any continuous column data point which was not addressed by create dummies function.
-    It will choose only those columns with dtype int or float and whose unique values are more than 5. For rescaling,
-    MinMax scaler is used as it is good for even those distributions which are not normal
+    It will choose only those columns with dtype int or float and whose unique values are more than threshold.
+    For rescaling,MinMax scaler is used as it is good for even those distributions which are not normal
     :param df: df whose columns needs to be rescaled
     :param ignore: Columns that needs to be ignored
     :param threshold: Threshold for no. of non unique values in a column above which the column is fit for rescaling.
