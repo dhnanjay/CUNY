@@ -106,8 +106,9 @@ def randomForestClassifier(df,no_trees=100,features=12,kFold=10,test_size=0.3):
 
     kfold = KFold(kFold, random_state=42)
     model = RandomForestClassifier(n_estimators=no_trees, max_features=features)
-    results = cross_val_score(model, X, y, cv=kfold)
-    print("Mean Cross Validation Score :",results.mean())
+    results = cross_val_score(model, X, y, cv=kfold, scoring='roc_auc')
+   # print("Cross Validation Accuracy & SD: %.3f%% (%.3f%%)" % (results.mean() * 100.0, results.std() * 100.0))
+    print("AUC & SD: %.3f%% (%.3f%%)" % (results.mean() * 100.0, results.std() * 100.0))
     model.fit(X_train, y_train)
     result = model.score(X_test, y_test)
     print("Accuracy : %.3f%%" % (result * 100.0))
