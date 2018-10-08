@@ -98,6 +98,16 @@ def rescaleFeatures(df, ignore=['Survived', 'PassengerId'], threshold=9):
 
 
 def randomForestClassifier(df,no_trees=100,features=12,kFold=10,test_size=0.3):
+    """
+    This function applies Random Forest Algorithm to the df. It tells AUC for the total dataset.
+    Accuracy for the test data from training data set and Confusion Matrix
+    :param df:
+    :param no_trees:
+    :param features:
+    :param kFold:
+    :param test_size:
+    :return:
+    """
     # Create arrays for the features and the response variable
     y = df.Survived.values
     X = df.drop(['PassengerId','Survived'], axis=1).values
