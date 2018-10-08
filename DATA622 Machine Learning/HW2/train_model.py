@@ -41,12 +41,12 @@ def fixMissingData(df, threshold_perc=25, dummies=10):
             # List Column Name, No. of data point missing & data missing in %
             print (idx, ":", x, "|", "Missing data in % :", round((int(x) / int(df.shape[0]) * 100), 2))
             if df[idx].dtype == 'float64' or df[idx].dtype == 'int64':
-                # For numeric datatypes, if the missing data is less than 25%, replace it with mean
+                # For numeric datatypes, if the missing data is less than threshold_perc, replace it with mean
                 if round((int(x) / int(df.shape[0]) * 100), 2) < threshold_perc:
                     df[idx].fillna(df[idx].mean(), inplace=True)
                     print("Missing Values in " + idx + " fixed.")
             elif df[idx].dtype == 'object':
-                # For non numeric dtype with less than 25 % missing values & non unique value less than 6, replace it with mode
+                # For non numeric dtype with less than threshold_perc missing values & non unique value less than dummies, replace it with mode
                 if round((int(x) / int(df.shape[0]) * 100), 2) < threshold_perc and int(df[idx].nunique()) < dummies:
                     df[idx].fillna(df[idx].mode()[0], inplace=True)
                     print("Missing Values in " + idx + " fixed.")
@@ -55,7 +55,7 @@ def fixMissingData(df, threshold_perc=25, dummies=10):
 
 def createDummies(df,target='Survived',dummies=10):
     """
-    This function will create dummies for any column which unique values less than dummies.
+    This function will create dummies for any column whose unique value is less than dummies.
      Target variable will be ignored
     :param df: dataframe for which dummies needs to be created
     :param target: target variable needs to be ignored
