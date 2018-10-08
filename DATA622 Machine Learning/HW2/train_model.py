@@ -28,8 +28,8 @@ def fixMissingData(df, threshold_perc=25, dummies=10):
     """
     This function will list all the columns that has Missing Values. It will then identify datatype of each column
     which has missing values and will then try to fix it. For the column datatype: int & float whose missing value is
-    less than 25% of the total data, it will substitute with mean value. For column datatype: Object with  missing
-    value less than 25% & non unique values less than 10, it will substitute with  Mode value
+    less than threshold_perc of the total data, it will substitute with mean value. For column datatype: Object with  missing
+    value less than threshold_perc & non unique values less than dummies, it will substitute with  Mode value
     :param df: dataframe with missing values
     :param threshold_perc: Value before which data would be fixed automatically.Above this value data needs to be analysed further
     :param dummies: Value below which data is considered fit to be for one hot encoding i.e dummies & hence can be fixed
@@ -55,7 +55,8 @@ def fixMissingData(df, threshold_perc=25, dummies=10):
 
 def createDummies(df,target='Survived',dummies=10):
     """
-    This function will create dummies for any column which has 5 or less unique values. Target variable will be ignored
+    This function will create dummies for any column which unique values less than dummies.
+     Target variable will be ignored
     :param df: dataframe for which dummies needs to be created
     :param target: target variable needs to be ignored
     :param dummies: Value below which data is considered fit to be for one hot encoding i.e dummies
