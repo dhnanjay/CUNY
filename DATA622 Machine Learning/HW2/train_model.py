@@ -3,11 +3,13 @@ CUNY DATA 622-2 Assignment 2
 
 @author : Dhananjay Kumar
 """
-
+from pull_data import *
 import pandas as pd
 import numpy as np
 import time
+import itertools
 import sys
+import csv
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
@@ -136,15 +138,54 @@ def tuneHP(df,cv=10,test_size=0.2):
         "n_estimators":np.arange(35, 40, 2).tolist(), # list(range(10, 100)),
         "max_depth": np.arange(10, 15, 2).tolist(), #list(range(1,50)),
         "min_samples_leaf": np.arange(1, 10, 2).tolist(), #list(range(1,10)),
+        "criterion": ['gini', 'entropy'],
         "max_features": ['sqrt','auto','log2']}
 
-    CV_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid, cv=cv)
+    CV_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid,verbose=3, scoring='roc_auc',
+                          cv=cStratifiedKFold(y_train, n_folds=cv, shuffle=True),n_jobs=-1)
     CV_rfc.fit(X_train, y_train)
     print(CV_rfc.best_params_)
     get_time(startT, time.time(), sys._getframe().f_code.co_name)
     return CV_rfc.best_params_
 
-def randomForestClassifier(df,n_estimators,features='sqrt',max_depth=10, min_samples_leaf=1, kFold=10,test_size=0.25):
+def plot_confusion_matrix(cm, classes,
+                          normalize=False,
+                          title='Confusion matrix',
+                          cmap=plt.cm.Blues):
+    """
+    This function prints and plots the confusion matrix.
+    Normalization can be applied by setting `normalize=True`.
+    """
+    if normalize:
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        print("Normalized confusion matrix")
+    else:
+        print('Confusion matrix, without normalization')
+
+    print(cm)
+
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(len(classes))
+    plt.xticks(tick_marks, classes, rotation=45)
+    plt.yticks(tick_marks, classes)
+
+    fmt = '.2f' if normalize else 'd'
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, format(cm[i, j], fmt),
+                 horizontalalignment="center",
+                 color="white" if cm[i, j] > thresh else "black")
+
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+    plt.tight_layout()
+
+
+
+def randomForestClassifier(df,n_estimators,features='sqrt',max_depth=10, min_samples_leaf=1,
+                           criterion='gini', kFold=10,test_size=0.25):
     """
     This function applies Random Forest Algorithm to the df. It tells AUC for the total dataset.
     Accuracy for the test data from training data set and Confusion Matrix
@@ -159,12 +200,23 @@ def randomForestClassifier(df,n_estimators,features='sqrt',max_depth=10, min_sam
     # Create arrays for the features and the response variable
     y = df.Survived.values
     X = df.drop(['PassengerId', 'Survived'], axis=1).values
+
+    # Save Model Features in CSV
+    with open("model_features.csv", "w") as output:
+        writer = csv.writer(output, lineterminator='\n')
+        for val in list(df.drop(['PassengerId', 'Survived'], axis=1)):
+            writer.writerow([val])
+    if os.path.exists('model_features.csv'):
+        print("Model Features downloaded")
+    else:
+        print("Unable to download Model Features")
+
     # Split into training and test set
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=42, stratify=y)
 
     kfold = KFold(kFold, random_state=42)
     model = RandomForestClassifier(n_jobs=-1, oob_score=True, n_estimators=n_estimators, max_features=features,
-                                   max_depth=max_depth, min_samples_leaf=min_samples_leaf,random_state=42)
+                                   max_depth=max_depth, min_samples_leaf=min_samples_leaf,criterion=criterion,random_state=42)
     results = cross_val_score(model, X, y, cv=kfold, scoring='roc_auc')
     # print("Cross Validation Accuracy & SD: %.3f%% (%.3f%%)" % (results.mean() * 100.0, results.std() * 100.0))
     print("AUC & SD: %.3f%% (%.3f%%)" % (results.mean() * 100.0, results.std() * 100.0))
@@ -176,9 +228,13 @@ def randomForestClassifier(df,n_estimators,features='sqrt',max_depth=10, min_sam
     matrix = confusion_matrix(y_test, predicted)
     print("Confusion Matrix :-")
     print(matrix)
+    plt.figure()
+    plot_confusion_matrix(matrix, normalize=False,classes=[0,1],title="Confusion Matrix")
+    plt.show()
 
     # save the model to disk
-    filename = 'final_model.sav'
+    filename = 'final_model.pkl'
     dump(model, open(filename, 'wb'))
     print("Model saved to local disk")
     get_time(startT, time.time(), sys._getframe().f_code.co_name)
+
