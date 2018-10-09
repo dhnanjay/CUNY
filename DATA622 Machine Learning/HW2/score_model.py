@@ -45,8 +45,6 @@ def run_test_data(df=pd.read_csv("test.csv")):
     dropCol= list(set(list(df_test)) ^ set(list( dfMF.set_index(0).T)))
     p_df = df_test.drop(dropCol, axis=1)
 
-    print(list(p_df))
-
     # Run prediction
     pred_df = RFC.predict(p_df)
 
