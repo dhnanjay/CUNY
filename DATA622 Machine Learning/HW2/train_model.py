@@ -5,13 +5,31 @@ CUNY DATA 622-2 Assignment 2
 """
 
 import pandas as pd
+import numpy as np
+import time
+import sys
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import KFold
+from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix
 from pickle import dump
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import figure
+#figure(num=None, figsize=(18, 6), dpi=80, facecolor='w', edgecolor='k')
+
+def get_time(start, end, name):
+    """
+    This function will return time consumed to run any function and name of the function from where it is invoked
+    :param start: Start Time at which the first call to the function was made
+    :param end:  Time at which the processing of the function ended
+    :param name: Name of the Function from which this function is called
+    :return: Null
+    """
+    print("Function :",name," ||","Seconds :",round((end-start),2),"| ","Minutes :", round((end-start)/60,2))
+
 
 
 def dropFeatures(df):
@@ -50,7 +68,6 @@ def fixMissingData(df, threshold_perc=25, dummies=10):
                 if round((int(x) / int(df.shape[0]) * 100), 2) < threshold_perc and int(df[idx].nunique()) < dummies:
                     df[idx].fillna(df[idx].mode()[0], inplace=True)
                     print("Missing Values in " + idx + " fixed.")
-
     return df
 
 def createDummies(df,target='Survived',dummies=10):
@@ -89,16 +106,45 @@ def rescaleFeatures(df, ignore=['Survived', 'PassengerId'], threshold=9):
             rescaleCol.append(column)
     if len(rescaleCol) > 0:
         df[rescaleCol] = scaler.fit_transform(df[rescaleCol])
-        print("Following Columns rescaled using MinMaxSxaler :", rescaleCol)
+        print("Following Columns rescaled using MinMaxScaler :", rescaleCol)
     else:
         print(" No column found for rescaling !")
     return df
 
 
+def tuneHP(df,cv=10,test_size=0.2):
+    """
+    This func. is used for Hyperparameter tuning. It uses GridSearch for finding optimum combination of Hyperparameters
+    :param df: dataframe with data
+    :param cv: Cross Validation split, Default Size: 10
+    :param test_size: Test Size, Default Size: Test: 20%
+    :return:
+    """
+    startT = time.time()
 
+    # Create arrays for the features and the response variable
+    y = df.Survived.values
+    X = df.drop(['PassengerId', 'Survived'], axis=1).values
+    # Split into training and test set
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=42, stratify=y)
 
+    # Create Random Forest Model
+    rfc = RandomForestClassifier(n_jobs=-1, oob_score=True, random_state=42)
 
-def randomForestClassifier(df,no_trees=100,features=12,kFold=10,test_size=0.3):
+    # Use a grid over parameters of interest
+    param_grid = {
+        "n_estimators":np.arange(35, 40, 2).tolist(), # list(range(10, 100)),
+        "max_depth": np.arange(10, 15, 2).tolist(), #list(range(1,50)),
+        "min_samples_leaf": np.arange(1, 10, 2).tolist(), #list(range(1,10)),
+        "max_features": ['sqrt','auto','log2']}
+
+    CV_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid, cv=cv)
+    CV_rfc.fit(X_train, y_train)
+    print(CV_rfc.best_params_)
+    get_time(startT, time.time(), sys._getframe().f_code.co_name)
+    return CV_rfc.best_params_
+
+def randomForestClassifier(df,n_estimators,features='sqrt',max_depth=10, min_samples_leaf=1, kFold=10,test_size=0.25):
     """
     This function applies Random Forest Algorithm to the df. It tells AUC for the total dataset.
     Accuracy for the test data from training data set and Confusion Matrix
@@ -109,16 +155,18 @@ def randomForestClassifier(df,no_trees=100,features=12,kFold=10,test_size=0.3):
     :param test_size:
     :return:
     """
+    startT = time.time()
     # Create arrays for the features and the response variable
     y = df.Survived.values
-    X = df.drop(['PassengerId','Survived'], axis=1).values
+    X = df.drop(['PassengerId', 'Survived'], axis=1).values
     # Split into training and test set
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=42, stratify=y)
 
     kfold = KFold(kFold, random_state=42)
-    model = RandomForestClassifier(n_estimators=no_trees, max_features=features)
+    model = RandomForestClassifier(n_jobs=-1, oob_score=True, n_estimators=n_estimators, max_features=features,
+                                   max_depth=max_depth, min_samples_leaf=min_samples_leaf,random_state=42)
     results = cross_val_score(model, X, y, cv=kfold, scoring='roc_auc')
-   # print("Cross Validation Accuracy & SD: %.3f%% (%.3f%%)" % (results.mean() * 100.0, results.std() * 100.0))
+    # print("Cross Validation Accuracy & SD: %.3f%% (%.3f%%)" % (results.mean() * 100.0, results.std() * 100.0))
     print("AUC & SD: %.3f%% (%.3f%%)" % (results.mean() * 100.0, results.std() * 100.0))
     model.fit(X_train, y_train)
     result = model.score(X_test, y_test)
@@ -132,3 +180,5 @@ def randomForestClassifier(df,no_trees=100,features=12,kFold=10,test_size=0.3):
     # save the model to disk
     filename = 'final_model.sav'
     dump(model, open(filename, 'wb'))
+    print("Model saved to local disk")
+    get_time(startT, time.time(), sys._getframe().f_code.co_name)
