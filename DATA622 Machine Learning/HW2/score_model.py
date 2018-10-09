@@ -33,14 +33,25 @@ def run_test_data(df=pd.read_csv("test.csv")):
     except:
         raise
 
+    # Load Model Features
+    try:
+        dfMF = pd.read_csv("model_features.csv",header=None)
+    except:
+        raise
+
+
     # Remove passenger ID
-    p_df = df_test.drop(['PassengerId'], axis=1)
+   # p_df = df_test.drop(['PassengerId'], axis=1)
+    dropCol= list(set(list(df_test)) ^ set(list( dfMF.set_index(0).T)))
+    p_df = df_test.drop(dropCol, axis=1)
+
+    print(list(p_df))
 
     # Run prediction
     pred_df = RFC.predict(p_df)
 
     # Concatenate passenger ID and prediction
-    pred_df = pd.concat([test_df['PassengerId'], pd.DataFrame(pred_df)], axis=1)
+    pred_df = pd.concat([df_test['PassengerId'], pd.DataFrame(pred_df)], axis=1)
     pred_df.columns = ['PassengerId', 'Survived']
 
     # Save results to CSV file for Kaggle submission
