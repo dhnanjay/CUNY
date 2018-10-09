@@ -40,8 +40,8 @@ def run_test_data(df=pd.read_csv("test.csv")):
         raise
 
 
-    # Remove passenger ID
-   # p_df = df_test.drop(['PassengerId'], axis=1)
+    # Remove Features not present in Model
+
     dropCol= list(set(list(df_test)) ^ set(list( dfMF.set_index(0).T)))
     p_df = df_test.drop(dropCol, axis=1)
 
