@@ -15,6 +15,7 @@ from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import StratifiedKFold
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix
 from pickle import dump
@@ -135,14 +136,17 @@ def tuneHP(df,cv=10,test_size=0.2):
 
     # Use a grid over parameters of interest
     param_grid = {
-        "n_estimators":np.arange(35, 40, 2).tolist(), # list(range(10, 100)),
-        "max_depth": np.arange(10, 15, 2).tolist(), #list(range(1,50)),
+        "n_estimators":np.arange(10, 50, 2).tolist(), # list(range(10, 100)),
+        "max_depth": np.arange(1, 40, 2).tolist(), #list(range(1,50)),
         "min_samples_leaf": np.arange(1, 10, 2).tolist(), #list(range(1,10)),
         "criterion": ['gini', 'entropy'],
         "max_features": ['sqrt','auto','log2']}
 
-    CV_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid,verbose=3, scoring='roc_auc',
-                          cv=cStratifiedKFold(y_train, n_folds=cv, shuffle=True),n_jobs=-1)
+    kfolds = StratifiedKFold(cv)
+
+    CV_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid,verbose=3, scoring='accuracy', # roc_auc
+				cv=kfolds.split(X_train,y_train), n_jobs=-1)
+                      #    cv=StratifiedKFold(y_train, n_folds=cv, shuffle=True),n_jobs=-1)
     CV_rfc.fit(X_train, y_train)
     print(CV_rfc.best_params_)
     get_time(startT, time.time(), sys._getframe().f_code.co_name)
