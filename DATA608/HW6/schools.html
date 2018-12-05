@@ -78,7 +78,7 @@ var schoolsOverlay = L.d3SvgOverlay(function(sel,proj){
 		.attr('fill',function(d,i){ return color[i+1]; });
 });
 
-d3.csv("https://raw.githubusercontent.com/ilyakats/CUNY-DATA608/master/hw6/schools.csv",function(data){
+d3.csv("https://raw.githubusercontent.com/dhnanjay/CUNY/master/DATA608/HW6/schools.csv",function(data){
   schools = data.map(function(d){
     d.latLng = [+d.lat,+d.lng];
     d.art = +d.art;
