@@ -1,0 +1,998 @@
+Time,Date,City,State,Country,Employee_In_Store
+06:00:00,2009-01-02,Basildon,England,United Kingdom,5
+04:00:00,2009-01-02,Parkville,MO,United States,2
+13:00:00,2009-01-02,Astoria,OR,United States,3
+14:00:00,2009-01-03,Echuca,Victoria,Australia,4
+12:00:00,2009-01-04,Cahaba Heights,AL,United States,4
+13:00:00,2009-01-04,Mickleton,NJ,United States,3
+20:00:00,2009-01-04,Peoria,IL,United States,2
+20:00:00,2009-01-02,Martin,TN,United States,3
+13:00:00,2009-01-04,Tel Aviv,Tel Aviv,Israel,2
+14:00:00,2009-01-04,Chatou,Ile-de-France,France,5
+02:00:00,2009-01-05,New York,NY,United States,5
+05:00:00,2009-01-05,Eindhoven,Noord-Brabant,Netherlands,5
+09:00:00,2009-01-02,Shavano Park,TX,United States,5
+10:00:00,2009-01-05,Eagle,ID,United States,4
+14:00:00,2009-01-02,Riverside,NJ,United States,4
+01:00:00,2009-01-04,Julianstown,Meath,Ireland,5
+11:00:00,2009-01-05,Ottawa,Ontario,Canada,3
+05:00:00,2009-01-06,Hyderabad,Andhra Pradesh,India,4
+07:00:00,2009-01-06,London,England,United Kingdom,4
+07:00:00,2009-01-02,Salt Lake City,UT,United States,2
+12:00:00,2009-01-06,Manchester,England,United Kingdom,4
+11:00:00,2009-01-01,Ballynora,Cork,Ireland,5
+04:00:00,2009-01-05,Roodepoort,Gauteng,South Africa,5
+07:00:00,2009-01-06,Chula Vista,CA,United States,2
+01:00:00,2009-01-02,Kuopio,Ita-Suomen Laani,Finland,4
+02:00:00,2009-01-01,Sugar Land,TX,United States,4
+08:00:00,2009-01-07,New York,NY,United States,5
+02:00:00,2009-01-02,London,England,United Kingdom,5
+20:00:00,2009-01-01,Morton,IL,United States,3
+00:00:00,2009-01-08,Los Gatos,CA,United States,4
+03:00:00,2009-01-08,New York,NY,United States,3
+03:00:00,2009-01-08,Miami,FL,United States,5
+01:00:00,2009-01-08,Vesenaz,Geneve,Switzerland,2
+09:00:00,2009-01-03,Brooklyn,NY,United States,4
+13:00:00,2009-01-05,Badhoevedorp,Noord-Holland,Netherlands,2
+07:00:00,2009-01-06,Reston,VA,United States,4
+20:00:00,2009-01-05,Burpengary,Queensland,Australia,2
+16:00:00,2009-01-08,Phoenix,AZ,United States,5
+06:00:00,2009-01-09,Houston,TX,United States,4
+22:00:00,2009-01-06,Pittsfield,VT,United States,2
+23:00:00,2009-01-06,Pittsfield,VT,United States,3
+07:00:00,2009-01-07,Ball Ground,GA,United States,2
+13:00:00,2009-01-03,Helsingor,Frederiksborg,Denmark,3
+15:00:00,2009-01-07,Flossmoor,IL,United States,5
+20:00:00,2009-01-07,Houston,TX,United States,3
+10:00:00,2009-01-03,Delray Beach,FL,United States,3
+15:00:00,2009-01-09,Newbury,England,United Kingdom,3
+13:00:00,2009-01-03,Kobenhavn,Kobenhavn,Denmark,5
+12:00:00,2009-01-10,Sandy Springs,GA,United States,3
+14:00:00,2009-01-10,Kinsaley,Dublin,Ireland,4
+12:00:00,2009-01-10,Fort Lauderdale,FL,United States,5
+01:00:00,2009-01-06,Melbourne,Victoria,Australia,3
+14:00:00,2009-01-10,Ankeny,IA,United States,4
+10:00:00,2009-01-07,Pittsboro,NC,United States,5
+01:00:00,2009-01-01,New Rochelle,NY,United States,3
+02:00:00,2009-01-11,Gold Coast,Queensland,Australia,5
+14:00:00,2009-01-11,Brussels,Brussels (Bruxelles),Belgium,2
+21:00:00,2009-01-10,Maple Ridge District Municipality,British Columbia,Canada,3
+06:00:00,2009-01-07,Beachwood,OH,United States,2
+08:00:00,2009-01-04,Prince Albert,Saskatchewan,Canada,5
+00:00:00,2009-01-05,Saltsjobaden,Stockholm,Sweden,4
+06:00:00,2009-01-02,Kemble,England,United Kingdom,4
+03:00:00,2009-01-12,W Lebanon,NH,United States,4
+13:00:00,2009-01-04,Headley,England,United Kingdom,4
+00:00:00,2009-01-07,Lausanne,Vaud,Switzerland,5
+05:00:00,2009-01-12,Southampton,England,United Kingdom,5
+15:00:00,2009-01-08,Woodsboro,MD,United States,2
+11:00:00,2009-01-11,Stavanger,Rogaland,Norway,3
+20:00:00,2009-01-07,Red Deer,Alberta,Canada,4
+22:00:00,2009-01-02,Memphis,TN,United States,3
+13:00:00,2009-01-05,Morges,Vaud,Switzerland,5
+20:00:00,2009-01-08,Calgary,Alberta,Canada,3
+13:00:00,2009-01-08,Belleville,Ontario,Canada,2
+13:00:00,2009-01-11,Cincinnati,OH,United States,5
+19:00:00,2009-01-12,Comox,British Columbia,Canada,3
+13:00:00,2009-01-12,Gasperich,Luxembourg,Luxembourg,4
+10:00:00,2009-01-11,Helens Bay,Northern Ireland,United Kingdom,2
+05:00:00,2009-01-13,Milan,Lombardy,Italy,5
+06:00:00,2009-01-13,Staten Island,NY,United States,2
+13:00:00,2009-01-08,Oslo,Oslo,Norway,3
+11:00:00,2009-01-02,Farmington,Michigan,United States,4
+19:00:00,2009-01-07,Santa Monica,CA,United States,3
+20:00:00,2009-01-01,Calgary,Alberta,Canada,4
+15:00:00,2009-01-03,Vancouver,British Columbia,Canada,3
+03:00:00,2009-01-12,Irvine,CA,United States,4
+08:00:00,2009-01-05,Telgte,Nordrhein-Westfalen,Germany,2
+14:00:00,2009-01-10,Cheltenham,England,United Kingdom,2
+11:00:00,2009-01-13,Keller,VA,United States,5
+12:00:00,2009-01-02,Nakskov,Storstrom,Denmark,3
+04:00:00,2009-01-14,Honolulu,HI,United States,5
+17:00:00,2009-01-06,Bubuieci,Chisinau,Moldova,5
+13:00:00,2009-01-03,Amelia Island,FL,United States,4
+07:00:00,2009-01-04,Alliston,Ontario,Canada,2
+07:00:00,2009-01-12,La Alberca,Murcia,Spain,5
+15:00:00,2009-01-06,Rathgar,Dublin,Ireland,5
+23:00:00,2009-01-13,Coral Gables,FL,United States,3
+19:00:00,2009-01-14,Miami,FL,United States,3
+21:00:00,2009-01-06,Vancouver,British Columbia,Canada,2
+11:00:00,2009-01-14,Jumeira,Dubayy,United Arab Emirates,4
+19:00:00,2009-01-13,Englewood,CO,United States,4
+07:00:00,2009-01-08,Bournemouth,England,United Kingdom,4
+02:00:00,2009-01-15,Genoa,IL,United States,4
+06:00:00,2009-01-12,Al 'Adliyah,Al Manamah,Bahrain,3
+03:00:00,2009-01-15,Rouen,Upper Normandy,France,5
+15:00:00,2009-01-05,Parkland,FL,United States,2
+05:00:00,2009-01-10,San Francisco,CA,United States,5
+04:00:00,2009-01-15,Keller,VA,United States,4
+11:00:00,2009-01-12,Tsawwassen,British Columbia,Canada,3
+10:00:00,2009-01-06,Clinton,NJ,United States,2
+09:00:00,2009-01-14,Owensboro,KY,United States,5
+22:00:00,2009-01-14,Lakewood Village,TX,United States,4
+07:00:00,2009-01-06,Okotoks,Alberta,Canada,4
+05:00:00,2009-01-01,Glimmen,Groningen,Netherlands,4
+11:00:00,2009-01-15,Calgary,Alberta,Canada,4
+11:00:00,2009-01-15,Kanata,Ontario,Canada,2
+09:00:00,2009-01-12,Bergen,Nordrhein-Westfalen,Germany,2
+12:00:00,2009-01-15,College Park,MD,United States,2
+11:00:00,2009-01-14,Kailua Kona,HI,United States,5
+15:00:00,2009-01-14,Redondo Beach,CA,United States,3
+11:00:00,2009-01-03,Fountain Hls,AZ,United States,2
+01:00:00,2009-01-12,Brisbane,Queensland,Australia,3
+07:00:00,2009-01-16,Mahopac,NY,United States,4
+12:00:00,2009-01-15,Ile-Perrot,Quebec,Canada,3
+07:00:00,2009-01-07,Bruxelles,Brussels (Bruxelles),Belgium,3
+09:00:00,2009-01-03,Chicago,IL,United States,3
+17:00:00,2009-01-16,Rayford,TX,United States,4
+05:00:00,2009-01-05,Escondido,CA,United States,2
+00:00:00,2009-01-02,Tesvikiye,Istanbul,Turkey,5
+01:00:00,2009-01-13,Centurion,Gauteng,South Africa,3
+10:00:00,2009-01-15,York,England,United Kingdom,3
+08:00:00,2009-01-11,Ashburn,VA,United States,4
+15:00:00,2009-01-15,Los Angeles,CA,United States,3
+12:00:00,2009-01-01,Edgewood,WA,United States,3
+14:00:00,2009-01-06,New York,NY,United States,5
+15:00:00,2009-01-09,Basingstoke,England,United Kingdom,5
+12:00:00,2009-01-17,Den Haag,Zuid-Holland,Netherlands,5
+12:00:00,2009-01-12,Marietta,GA,United States,4
+07:00:00,2009-01-04,Houston,TX,United States,2
+16:00:00,2009-01-17,West Orange,NJ,United States,5
+03:00:00,2009-01-01,Amsterdam,Noord-Holland,Netherlands,5
+05:00:00,2009-01-18,Downey,CA,United States,5
+05:00:00,2009-01-18,Urlingford,Kilkenny,Ireland,3
+01:00:00,2009-01-01,Holte,Kobenhavn,Denmark,5
+06:00:00,2009-01-18,Freienbach,Schwyz,Switzerland,5
+10:00:00,2009-01-11,Hofheim am Taunus,Hessen,Germany,4
+17:00:00,2009-01-04,Lafayette,CA,United States,5
+01:00:00,2009-01-17,Mushrif,,Kuwait,2
+02:00:00,2009-01-18,Nashville,AR,United States,4
+11:00:00,2009-01-18,New Malden,England,United Kingdom,4
+04:00:00,2009-01-18,Bishop Auckland,England,United Kingdom,4
+13:00:00,2009-01-18,Navan,Meath,Ireland,3
+11:00:00,2009-01-18,Joppa,MD,United States,5
+12:00:00,2009-01-18,Joppa,MD,United States,3
+19:00:00,2009-01-13,Hampton,NJ,United States,2
+21:00:00,2009-01-05,Louisville,KY,United States,3
+06:00:00,2009-01-14,Broadlands,VA,United States,2
+23:00:00,2009-01-04,Yellowknife,Northwest Territories,Canada,3
+16:00:00,2009-01-18,Los Angeles,CA,United States,4
+17:00:00,2009-01-18,New York,NY,United States,4
+17:00:00,2009-01-18,Saint Paul,MN,United States,3
+17:00:00,2009-01-18,New York,NY,United States,3
+11:00:00,2009-01-11,Spring Lake Park,MN,United States,5
+20:00:00,2009-01-13,Winnipeg,Manitoba,Canada,4
+16:00:00,2009-01-12,Seattle,WA,United States,3
+15:00:00,2009-01-12,Deptford,NJ,United States,3
+12:00:00,2009-01-06,Amsterdam,Noord-Holland,Netherlands,2
+18:00:00,2009-01-09,Alpharetta,GA,United States,5
+23:00:00,2009-01-18,Washington,DC,United States,3
+08:00:00,2009-01-07,Holmenkollen,Oslo,Norway,5
+09:00:00,2009-01-03,Zekeriyakoy,Istanbul,Turkey,2
+19:00:00,2009-01-05,Washington,DC,United States,5
+12:00:00,2009-01-04,Montreal,Quebec,Canada,3
+11:00:00,2009-01-08,Braunschweig,Lower Saxony,Germany,5
+18:00:00,2009-01-14,Athens,GA,United States,5
+19:00:00,2009-01-11,Hoschton,GA,United States,4
+05:00:00,2009-01-14,Binningen,Basel-Country,Switzerland,3
+08:00:00,2009-01-15,Royal Oak,MI,United States,3
+08:00:00,2009-01-15,Royal Oak,MI,United States,2
+17:00:00,2009-01-02,Belmont,MA,United States,2
+16:00:00,2009-01-19,Old Greenwich,CT,United States,3
+16:00:00,2009-01-19,Coconut Grove,FL,United States,4
+17:00:00,2009-01-10,Vienna,VA,United States,5
+13:00:00,2009-01-18,San Ramon,CA,United States,2
+05:00:00,2009-01-15,Norfolk,VA,United States,4
+23:00:00,2009-01-19,Norfolk,VA,United States,4
+11:00:00,2009-01-19,Aberdeen,Scotland,United Kingdom,3
+01:00:00,2009-01-04,Charlestown,New South Wales,Australia,3
+03:00:00,2009-01-20,Wigan,England,United Kingdom,5
+10:00:00,2009-01-03,Rockville,MD,United States,4
+05:00:00,2009-01-20,Shreveport,LA,United States,4
+06:00:00,2009-01-20,Shreveport,LA,United States,2
+11:00:00,2009-01-10,Little Silver,NJ,United States,3
+05:00:00,2009-01-20,Abbey Town,England,United Kingdom,4
+16:00:00,2009-01-19,Mid City West,PA,United States,2
+10:00:00,2009-01-18,Atlanta,Georgia,United States,3
+06:00:00,2009-01-07,Paris,Ile-de-France,France,5
+08:00:00,2009-01-03,Milton Keynes,England,United Kingdom,2
+02:00:00,2009-01-01,Dresden,Saxony,Germany,4
+12:00:00,2009-01-20,NYC,NY,United States,2
+03:00:00,2009-01-20,The Grange,Queensland,Australia,2
+11:00:00,2009-01-15,Brookline,MA,United States,3
+16:00:00,2009-01-05,Montreal-Nord,Quebec,Canada,5
+19:00:00,2009-01-12,Irving,TX,United States,5
+19:00:00,2009-01-04,Ottawa Hills,OH,United States,3
+08:00:00,2009-01-10,Portola Valley,CA,United States,4
+14:00:00,2009-01-09,Sydney,New South Wales,Australia,5
+02:00:00,2009-01-16,Kearns,UT,United States,2
+18:00:00,2009-01-16,Wollongong,New South Wales,Australia,2
+08:00:00,2009-01-20,Brooklyn,NY,United States,4
+12:00:00,2009-01-06,Penngrove,CA,United States,3
+08:00:00,2009-01-10,Lemont,IL,United States,4
+14:00:00,2009-01-07,San Carlos,CA,United States,4
+15:00:00,2009-01-08,Chicago,IL,United States,2
+11:00:00,2009-01-21,Oslo,Oslo,Norway,5
+14:00:00,2009-01-21,Wantagh,NY,United States,4
+02:00:00,2009-01-02,Coomera,Queensland,Australia,4
+19:00:00,2009-01-19,Fort Oglethorpe,GA,United States,5
+06:00:00,2009-01-18,Corbin City,NJ,United States,3
+11:00:00,2009-01-20,Lakeside,CA,United States,4
+16:00:00,2009-01-20,Margate,FL,United States,4
+07:00:00,2009-01-01,South Palm Beach,FL,United States,5
+14:00:00,2009-01-21,New York,NY,United States,3
+22:00:00,2009-01-07,Anchorage,AK,United States,5
+22:00:00,2009-01-11,Mona Vale,New South Wales,Australia,2
+14:00:00,2009-01-21,Castricum,Noord-Holland,Netherlands,5
+16:00:00,2009-01-18,North Brunswick,NJ,United States,4
+12:00:00,2009-01-21,Jacksonville,FL,United States,5
+06:00:00,2009-01-22,Baytown,TX,United States,4
+09:00:00,2009-01-12,Winter Haven,FL,United States,2
+08:00:00,2009-01-22,Gonzaga Univ,WA,United States,3
+06:00:00,2009-01-03,Malmo,Skane,Sweden,4
+12:00:00,2009-01-01,San Pawl tat-Targa,,Malta,3
+22:00:00,2009-01-04,Wiesbaden,Hessen,Germany,4
+02:00:00,2009-01-21,London,England,United Kingdom,3
+14:00:00,2009-01-01,Stavanger,Rogaland,Norway,2
+01:00:00,2009-01-16,Cork,Cork,Ireland,2
+08:00:00,2009-01-20,Winchester,MA,United States,4
+09:00:00,2009-01-04,Calgary,Alberta,Canada,3
+08:00:00,2009-01-06,Dallas,TX,United States,4
+04:00:00,2009-01-08,Malahide,Dublin,Ireland,2
+03:00:00,2009-01-23,Saint Paul,MN,United States,3
+04:00:00,2009-01-06,Edinburgh,Scotland,United Kingdom,5
+03:00:00,2009-01-23,Naarden,Noord-Holland,Netherlands,5
+04:00:00,2009-01-10,Oldenburg,Lower Saxony,Germany,5
+02:00:00,2009-01-05,Rennes,Brittany,France,4
+14:00:00,2009-01-21,Ely,NV,United States,4
+06:00:00,2009-01-21,Norfolk,VA,United States,2
+08:00:00,2009-01-19,Houston,TX,United States,4
+08:00:00,2009-01-23,Chepel,Budapest,Hungary,3
+23:00:00,2009-01-22,Buffalo Grove,IL,United States,4
+03:00:00,2009-01-14,Newburgh,Scotland,United Kingdom,5
+01:00:00,2009-01-16,Vienna,Vienna,Austria,2
+06:00:00,2009-01-01,Vicenza,Veneto,Italy,2
+07:00:00,2009-01-21,Mechanics Grove,PA,United States,4
+07:00:00,2009-01-23,Miami,FL,United States,3
+14:00:00,2009-01-18,Silver Spring,MD,United States,5
+09:00:00,2009-01-24,Kirriemuir,Scotland,United Kingdom,5
+01:00:00,2009-01-15,Roquefort,Provence-Alpes-Cote d'Azur,France,5
+07:00:00,2009-01-17,Portland,OR,United States,5
+11:00:00,2009-01-23,Staten Island,NY,United States,2
+15:00:00,2009-01-19,San Antonio,TX,United States,3
+07:00:00,2009-01-11,Guildford,England,United Kingdom,5
+03:00:00,2009-01-10,Horten,Vestfold,Norway,3
+19:00:00,2009-01-07,Englewood,CO,United States,4
+14:00:00,2009-01-17,San Antonio,TX,United States,4
+00:00:00,2009-01-25,Princeville,HI,United States,4
+14:00:00,2009-01-09,Castleknock,Dublin,Ireland,3
+14:00:00,2009-01-09,Castleknock,Dublin,Ireland,2
+15:00:00,2009-01-11,Bishops Stortford,England,United Kingdom,3
+14:00:00,2009-01-06,Den Haag,Zuid-Holland,Netherlands,4
+09:00:00,2009-01-06,Lafayette,CA,United States,5
+09:00:00,2009-01-01,Blackpool,England,United Kingdom,3
+07:00:00,2009-01-03,Hellerup,Kobenhavn,Denmark,5
+11:00:00,2009-01-11,London,England,United Kingdom,4
+14:00:00,2009-01-13,N Java,NY,United States,5
+10:00:00,2009-01-01,Munich,Bayern,Germany,5
+05:00:00,2009-01-16,Brulon,Pays de la Loire,France,5
+16:00:00,2009-01-06,Austin,TX,United States,3
+17:00:00,2009-01-18,Midland Park,NJ,United States,2
+15:00:00,2009-01-13,Centerport,NY,United States,2
+08:00:00,2009-01-24,Neustift am Walde,Vienna,Austria,4
+08:00:00,2009-01-24,Neustift am Walde,Vienna,Austria,3
+13:00:00,2009-01-18,Shorewood,MN,United States,5
+18:00:00,2009-01-22,Southlake,TX,United States,3
+08:00:00,2009-01-08,Huntington,NY,United States,2
+09:00:00,2009-01-04,The Woodlands,TX,United States,3
+20:00:00,2009-01-13,Kelowna,British Columbia,Canada,4
+10:00:00,2009-01-09,White House,TN,United States,2
+12:00:00,2009-01-05,Rungsted,Frederiksborg,Denmark,5
+03:00:00,2009-01-26,Lake Mahopac,NY,United States,2
+03:00:00,2009-01-26,Biot,Provence-Alpes-Cote d'Azur,France,5
+13:00:00,2009-01-11,Plantation,FL,United States,5
+15:00:00,2009-01-22,Killiney,Dublin,Ireland,4
+14:00:00,2009-01-09,Guer,Brittany,France,5
+11:00:00,2009-01-21,Arlington,VA,United States,5
+14:00:00,2009-01-01,Three Hills,Alberta,Canada,4
+04:00:00,2009-01-26,Great Falls,Virginia,United States,2
+04:00:00,2009-01-07,London,England,United Kingdom,5
+12:00:00,2009-01-11,Clontarf,Dublin,Ireland,3
+10:00:00,2009-01-26,Vancouver,British Columbia,Canada,4
+08:00:00,2009-01-26,London,England,United Kingdom,5
+17:00:00,2009-01-07,Dickerson,MD,United States,4
+20:00:00,2009-01-18,Princeton,NJ,United States,5
+09:00:00,2009-01-13,Calgary,Alberta,Canada,5
+18:00:00,2009-01-24,North Tustin,CA,United States,5
+00:00:00,2009-01-05,Gurgaon,Haryana,India,2
+01:00:00,2009-01-09,Rambouillet,Ile-de-France,France,3
+06:00:00,2009-01-26,Gladwyne,PA,United States,3
+16:00:00,2009-01-21,Houston,TX,United States,3
+05:00:00,2009-01-05,London,England,United Kingdom,5
+05:00:00,2009-01-27,Slough,England,United Kingdom,2
+08:00:00,2009-01-07,Glan-Munchweiler,Rhineland-Palatinate,Germany,4
+07:00:00,2009-01-20,Downingtown,PA,United States,2
+02:00:00,2009-01-27,MT Pleasant,TX,United States,5
+06:00:00,2009-01-05,Veigy-Foncenex,Rhone-Alpes,France,5
+08:00:00,2009-01-13,Katy,TX,United States,5
+09:00:00,2009-01-10,Gorey,,Jersey,2
+18:00:00,2009-01-08,Belgrade,MT,United States,4
+10:00:00,2009-01-12,Calgary,Alberta,Canada,5
+19:00:00,2009-01-01,Toronto,Ontario,Canada,4
+15:00:00,2009-01-27,Corrales,NM,United States,5
+18:00:00,2009-01-02,Cork,Cork,Ireland,2
+18:00:00,2009-01-08,Tenafly,NJ,United States,4
+18:00:00,2009-01-04,Leesburg,VA,United States,4
+08:00:00,2009-01-25,Alcona,Ontario,Canada,4
+22:00:00,2009-01-23,Kuala Lumpur,Kuala Lumpur,Malaysia,5
+10:00:00,2009-01-07,Sydney,New South Wales,Australia,4
+03:00:00,2009-01-18,Nerang,Queensland,Australia,5
+00:00:00,2009-01-28,Bryceville,FL,United States,3
+15:00:00,2009-01-02,Saffron Walden,England,United Kingdom,5
+13:00:00,2009-01-18,Sutton,Dublin,Ireland,3
+09:00:00,2009-01-16,Durban,KwaZulu-Natal,South Africa,3
+07:00:00,2009-01-28,Berkeswell,England,United Kingdom,2
+07:00:00,2009-01-28,Dryden,VA,United States,5
+12:00:00,2009-01-18,Santry,Dublin,Ireland,3
+14:00:00,2009-01-13,Barcelona,Catalonia,Spain,5
+07:00:00,2009-01-28,Fayetteville,NC,United States,5
+03:00:00,2009-01-28,Anse Comeau,Quebec,Canada,4
+15:00:00,2009-01-12,Thorlakshofn,,Iceland,3
+11:00:00,2009-01-06,Overland,KS,United States,2
+09:00:00,2009-01-23,King City,Ontario,Canada,2
+04:00:00,2009-01-24,Leighton Buzzard,England,United Kingdom,3
+18:00:00,2009-01-25,Umea,Vasterbotten,Sweden,2
+10:00:00,2009-01-15,Sola,Rogaland,Norway,5
+05:00:00,2009-01-02,Stockton-on-Tees,England,United Kingdom,4
+10:00:00,2009-01-09,Senatobia,MS,United States,3
+10:00:00,2009-01-04,Berlin,Berlin,Germany,4
+12:00:00,2009-01-02,Waldorf,MD,United States,3
+12:00:00,2009-01-28,Brooklyn,NY,United States,4
+12:00:00,2009-01-14,Lakeville,MN,United States,2
+07:00:00,2009-01-16,Saint-Cergues,Rhone-Alpes,France,4
+09:00:00,2009-01-06,Vancouver,British Columbia,Canada,2
+12:00:00,2009-01-07,Stamford,CT,United States,5
+12:00:00,2009-01-19,Rathfarnham,Dublin,Ireland,3
+15:00:00,2009-01-13,Paris,Ile-de-France,France,4
+08:00:00,2009-01-18,Howell,MI,United States,2
+17:00:00,2009-01-04,Encinitas,CA,United States,3
+13:00:00,2009-01-05,Atchison,KS,United States,3
+10:00:00,2009-01-05,Mililani,HI,United States,4
+18:00:00,2009-01-12,Victor,NY,United States,5
+04:00:00,2009-01-18,Fairbanks,AK,United States,5
+10:00:00,2009-01-16,Soro,Vestsjalland,Denmark,5
+08:00:00,2009-01-13,Warlingham,England,United Kingdom,4
+01:00:00,2009-01-12,Hamburg,Hamburg,Germany,2
+13:00:00,2009-01-28,Accokeek,MD,United States,5
+05:00:00,2009-01-29,Sunnyvale,CA,United States,5
+05:00:00,2009-01-29,Ithaca,NY,United States,3
+18:00:00,2009-01-13,Houston,TX,United States,4
+15:00:00,2009-01-09,Farmingtn Hls,MI,United States,4
+15:00:00,2009-01-23,Brooklyn,NY,United States,2
+12:00:00,2009-01-29,Great Falls,VA,United States,2
+11:00:00,2009-01-13,Gosport,England,United Kingdom,5
+10:00:00,2009-01-29,Scottsdale,AZ,United States,4
+15:00:00,2009-01-29,Sunnyvale,CA,United States,3
+05:00:00,2009-01-04,Songnae-dong,Soul-t'ukpyolsi,South Korea,2
+22:00:00,2009-01-22,Clyde Hill,WA,United States,4
+19:00:00,2009-01-05,Ruschlikon,Zurich,Switzerland,5
+12:00:00,2009-01-11,Minneapolis,MN,United States,2
+09:00:00,2009-01-02,Chicago,IL,United States,5
+11:00:00,2009-01-05,Petworth,England,United Kingdom,3
+09:00:00,2009-01-17,Abu Dhabi,Abu Zaby,United Arab Emirates,5
+01:00:00,2009-01-28,Stockholm,Stockholm,Sweden,4
+10:00:00,2009-01-19,Queen Creek,AZ,United States,2
+12:00:00,2009-01-26,Queen Creek,AZ,United States,5
+18:00:00,2009-01-07,Durham,NC,United States,3
+11:00:00,2009-01-26,Austin,TX,United States,4
+13:00:00,2009-01-08,Glenn Dale,MD,United States,5
+14:00:00,2009-01-11,Aardal,Sogn og Fjordane,Norway,2
+20:00:00,2009-01-30,Edinburg,TX,United States,2
+08:00:00,2009-01-01,South Melbourne,Victoria,Australia,4
+11:00:00,2009-01-17,Fortaleza,Ceara,Brazil,5
+07:00:00,2009-01-31,Weston,CT,United States,5
+09:00:00,2009-01-31,Reading,England,United Kingdom,2
+08:00:00,2009-01-31,Coconut Grove,FL,United States,2
+09:00:00,2009-01-31,London,England,United Kingdom,5
+14:00:00,2009-01-11,San Francisco,CA,United States,2
+12:00:00,2009-01-01,Zug,Zug,Switzerland,3
+11:00:00,2009-01-31,Scottsdale,AZ,United States,5
+09:00:00,2009-01-02,Potomac Falls,VA,United States,2
+13:00:00,2009-01-04,Superior,CO,United States,5
+12:00:00,2009-01-22,London,England,United Kingdom,4
+06:00:00,2009-01-18,Engleside,VA,United States,3
+00:00:00,2009-01-08,New Plymouth City,Taranaki,New Zealand,5
+07:00:00,2009-01-24,Roanoke,VA,United States,5
+11:00:00,2009-01-24,Norcross,GA,United States,5
+15:00:00,2009-01-06,Sandy Plains,GA,United States,4
+17:00:00,2009-01-24,Saint Catharines,Ontario,Canada,5
+09:00:00,2009-01-03,Gainesville,VA,United States,3
+16:00:00,2009-01-09,Nordstrand,Oslo,Norway,4
+14:00:00,2009-01-12,Arlington,MA,United States,3
+13:00:00,2009-01-07,West Hills,CA,United States,3
+19:00:00,2009-01-09,San Jose,CA,United States,3
+04:00:00,2009-01-26,London,England,United Kingdom,5
+21:00:00,2009-01-23,Oak Park,MI,United States,2
+16:00:00,2009-01-06,Terrell Hills,TX,United States,4
+07:00:00,2009-01-10,Jumeira,Dubayy,United Arab Emirates,2
+20:00:00,2009-01-28,Falmouth,VA,United States,4
+03:00:00,2009-01-09,Lurgan,Northern Ireland,United Kingdom,3
+08:00:00,2009-01-19,Richmond,TX,United States,2
+07:00:00,2009-01-15,Den Haag,Zuid-Holland,Netherlands,5
+19:00:00,2009-01-30,Ooltewah,TN,United States,2
+12:00:00,2009-01-05,Pacific Beach,CA,United States,3
+20:00:00,2009-01-28,Austin,TX,United States,5
+21:00:00,2009-01-10,Seattle,WA,United States,2
+19:00:00,2009-01-25,Seattle,WA,United States,3
+08:00:00,2009-01-07,Ottawa,Ontario,Canada,3
+09:00:00,2009-01-21,Vienna,VA,United States,2
+14:00:00,2009-01-23,Torbay,Auckland,New Zealand,3
+13:00:00,2009-01-05,Shenfield,England,United Kingdom,2
+03:00:00,2009-01-06,Bergen,Hordaland,Norway,4
+15:00:00,2009-01-15,Bolton,England,United Kingdom,5
+04:00:00,2009-01-23,Sandymount,Dublin,Ireland,3
+10:00:00,2009-01-12,Bellinzona,Ticino,Switzerland,4
+05:00:00,2009-01-30,Antwerpen,Antwerpen,Belgium,4
+10:00:00,2009-01-14,Campinas,Sao Paulo,Brazil,5
+08:00:00,2009-01-12,Nacka,Stockholm,Sweden,2
+08:00:00,2009-01-27,Fremont,CA,United States,3
+17:00:00,2009-01-30,Warwick,Queensland,Australia,4
+09:00:00,2009-01-15,Holmdel,NJ,United States,4
+11:00:00,2009-01-13,Baltimore,MD,United States,4
+11:00:00,2009-01-21,Saggart,Dublin,Ireland,4
+11:00:00,2009-01-16,Andover,MA,United States,4
+09:00:00,2009-01-01,La Crescenta,CA,United States,5
+05:00:00,2009-01-13,Suwanee,GA,United States,4
+16:00:00,2009-01-06,Seattle,WA,United States,4
+10:00:00,2009-01-05,Arlington,VA,United States,2
+21:00:00,2009-01-04,Calgary,Alberta,Canada,4
+20:00:00,2009-01-12,Kenmore,WA,United States,4
+03:00:00,2009-01-17,Fresno,CA,United States,4
+11:00:00,2009-01-18,Atascadero,CA,United States,4
+09:00:00,2009-01-27,Barcelona,Catalonia,Spain,2
+08:00:00,2009-01-08,High Wycombe,England,United Kingdom,3
+23:00:00,2009-01-26,Tsaritsyno,Moscow City,Russia,5
+21:00:00,2009-01-10,Ajax,Ontario,Canada,5
+06:00:00,2009-01-11,New York,NY,United States,4
+14:00:00,2009-01-19,Fairfield,IA,United States,2
+07:00:00,2009-01-22,North Bay,Ontario,Canada,2
+08:00:00,2009-01-15,Marietta,GA,United States,3
+06:00:00,2009-01-07,Clontarf,Dublin,Ireland,5
+08:00:00,2009-01-12,Danville,PA,United States,4
+13:00:00,2009-01-28,Okotoks,Alberta,Canada,4
+08:00:00,2009-01-25,Anthem,AZ,United States,5
+10:00:00,2009-01-05,Clonmel,Tipperary,Ireland,3
+19:00:00,2009-01-05,Arlington,VA,United States,5
+19:00:00,2009-01-07,Orlando,FL,United States,5
+11:00:00,2009-01-23,Walnut Creek,CA,United States,3
+21:00:00,2009-01-03,Centennial,CO,United States,5
+17:00:00,2009-01-11,Newtown,CT,United States,4
+20:00:00,2009-01-21,Vancouver,British Columbia,Canada,2
+10:00:00,2009-01-24,York,England,United Kingdom,5
+14:00:00,2009-01-07,Drogheda,Louth,Ireland,2
+10:00:00,2009-01-29,Saddle Brook,NJ,United States,3
+14:00:00,2009-01-08,San Diego,CA,United States,5
+21:00:00,2009-01-31,Issaquah,WA,United States,4
+16:00:00,2009-01-01,Bolton,England,United Kingdom,3
+13:00:00,2009-01-30,Lexington,MA,United States,3
+16:00:00,2009-01-27,Altadena,CA,United States,2
+07:00:00,2009-01-30,Altadena,CA,United States,3
+15:00:00,2009-01-17,Davis,CA,United States,4
+11:00:00,2009-01-12,Toronto,Ontario,Canada,2
+20:00:00,2009-01-30,Pasadena,CA,United States,2
+18:00:00,2009-01-27,Buffalo Grove,IL,United States,5
+12:00:00,2009-01-16,London,England,United Kingdom,5
+02:00:00,2009-01-02,Newcastle,Wicklow,Ireland,3
+05:00:00,2009-01-21,Norwalk,CT,United States,3
+01:00:00,2009-01-28,Besancon,Franche-Comte,France,4
+13:00:00,2009-01-08,Monte-Carlo,,Monaco,3
+12:00:00,2009-01-22,Monaco,,Monaco,2
+08:00:00,2009-01-20,Floyds Knobs,IN,United States,5
+07:00:00,2009-01-02,London,England,United Kingdom,4
+04:00:00,2009-01-11,Marietta,GA,United States,2
+07:00:00,2009-01-23,Marietta,GA,United States,4
+23:00:00,2009-01-21,Hon,HI,United States,3
+04:00:00,2009-01-11,Knoxville,TN,United States,5
+04:00:00,2009-01-11,Knoxville,TN,United States,3
+08:00:00,2009-01-10,Edinburgh,Scotland,United Kingdom,4
+12:00:00,2009-01-22,Paris,Ile-de-France,France,3
+15:00:00,2009-01-17,Humble,TX,United States,5
+14:00:00,2009-01-04,Mashpee,MA,United States,3
+17:00:00,2009-01-30,Hong Kong,,Hong Kong,3
+05:00:00,2009-01-20,Birmingham,MI,United States,2
+14:00:00,2009-01-26,St Augustine,FL,United States,4
+13:00:00,2009-01-29,Salt Lake City,UT,United States,5
+10:00:00,2009-01-12,Seattle,WA,United States,2
+08:00:00,2009-01-05,Ruti,Zurich,Switzerland,5
+16:00:00,2009-01-25,Rogers,AR,United States,4
+20:00:00,2009-01-25,Rogers,AR,United States,4
+11:00:00,2009-01-26,Dun Laoghaire,Dublin,Ireland,4
+02:00:00,2009-01-27,Perth,Scotland,United Kingdom,5
+13:00:00,2009-01-18,London,England,United Kingdom,5
+05:00:00,2009-01-07,Gries,Rhineland-Palatinate,Germany,5
+01:00:00,2009-01-25,Pietermaritzburg,KwaZulu-Natal,South Africa,5
+11:00:00,2009-01-18,Sutton Valence,England,United Kingdom,2
+01:00:00,2009-01-13,Lyngby,Kobenhavn,Denmark,2
+15:00:00,2009-01-02,Alpine,NJ,United States,2
+08:00:00,2009-01-25,Zurich,Zurich,Switzerland,3
+08:00:00,2009-01-14,Saskatoon,Saskatchewan,Canada,5
+11:00:00,2009-01-27,Pacific Palisades,CA,United States,2
+10:00:00,2009-01-08,Fort Saint James,British Columbia,Canada,4
+07:00:00,2009-01-05,Versoix,Geneve,Switzerland,5
+09:00:00,2009-01-22,Trumansburg,NY,United States,4
+12:00:00,2009-01-25,Kennett Square,PA,United States,4
+19:00:00,2009-01-10,San Jose,CA,United States,4
+19:00:00,2009-01-08,Ban Khlong Sip,Krung Thep,Thailand,3
+12:00:00,2009-01-08,Morro Bay,CA,United States,5
+16:00:00,2009-01-04,Parramatta,New South Wales,Australia,2
+11:00:00,2009-01-30,Dumbleton,England,United Kingdom,4
+05:00:00,2009-01-06,Altlengbach,Lower Austria,Austria,5
+03:00:00,2009-01-14,Ballincollig,Cork,Ireland,4
+03:00:00,2009-01-14,Ballincollig,Cork,Ireland,2
+03:00:00,2009-01-19,Zagore,Stara Zagora,Bulgaria,2
+01:00:00,2009-01-07,Vecmilgravis,Riga,Latvia,4
+13:00:00,2009-01-07,Trelex,Vaud,Switzerland,5
+02:00:00,2009-01-27,Ornex,Rhone-Alpes,France,5
+14:00:00,2009-01-03,Las Vegas,NV,United States,3
+12:00:00,2009-01-22,San Anselmo,CA,United States,5
+06:00:00,2009-01-29,Hannover,Lower Saxony,Germany,5
+09:00:00,2009-01-06,N Woodmere,NY,United States,5
+11:00:00,2009-01-12,Madrid,Madrid,Spain,2
+13:00:00,2009-01-13,Castlebar,Mayo,Ireland,3
+07:00:00,2009-01-12,Fairfax,CA,United States,2
+04:00:00,2009-01-30,Chandler,AZ,United States,2
+16:00:00,2009-01-22,Dammeron Valley,UT,United States,5
+06:00:00,2009-01-27,Buffalo,NY,United States,5
+10:00:00,2009-01-15,Olive Branch,MS,United States,2
+18:00:00,2009-01-19,Warwick,NY,United States,3
+22:00:00,2009-01-02,Gisborne,Victoria,Australia,3
+18:00:00,2009-01-01,San Mateo,CA,United States,5
+01:00:00,2009-01-14,Milton Keynes,England,United Kingdom,4
+08:00:00,2009-01-20,Kecskemet,Bacs-Kiskun,Hungary,2
+02:00:00,2009-01-29,Nakskov,Storstrom,Denmark,3
+18:00:00,2009-01-24,Aloma,FL,United States,2
+08:00:00,2009-01-07,Chandler,AZ,United States,4
+03:00:00,2009-01-24,Kjobenhavn,Staden Kobenhavn,Denmark,5
+15:00:00,2009-01-05,Stockton,England,United Kingdom,2
+16:00:00,2009-01-25,Cumming,GA,United States,5
+10:00:00,2009-01-15,Little Compton,RI,United States,2
+15:00:00,2009-01-20,Centennial,CO,United States,5
+05:00:00,2009-01-29,Herndon,VA,United States,3
+18:00:00,2009-01-06,Vista,CA,United States,5
+06:00:00,2009-01-21,Oostburg,WI,United States,5
+20:00:00,2009-01-26,Griffith,New South Wales,Australia,4
+17:00:00,2009-01-25,Ann Arbor,MI,United States,2
+14:00:00,2009-01-09,South Jordan,UT,United States,3
+02:00:00,2009-01-25,Dubai,Dubayy,United Arab Emirates,2
+20:00:00,2009-01-17,Dubai,Dubayy,United Arab Emirates,2
+07:00:00,2009-01-24,Kirriemuir,Scotland,United Kingdom,2
+07:00:00,2009-01-11,Tramore,Waterford,Ireland,5
+04:00:00,2009-01-08,Gdansk,Pomorskie,Poland,5
+10:00:00,2009-01-22,Arklow,Wicklow,Ireland,2
+20:00:00,2009-01-26,Lincoln,NE,United States,3
+12:00:00,2009-01-12,Tierp,Uppsala,Sweden,5
+01:00:00,2009-01-26,Brussels,Brussels (Bruxelles),Belgium,3
+12:00:00,2009-01-18,Burr Oak,IA,United States,2
+21:00:00,2009-01-24,Wheaton,IL,United States,5
+12:00:00,2009-01-26,Killeen,TX,United States,5
+07:00:00,2009-01-05,Manhattan,NY,United States,4
+12:00:00,2009-01-14,Oxford,England,United Kingdom,4
+00:00:00,2009-01-14,Paris,Ile-de-France,France,4
+12:00:00,2009-01-01,Exeter,England,United Kingdom,2
+06:00:00,2009-01-06,Rungsted,Frederiksborg,Denmark,3
+05:00:00,2009-01-15,London,England,United Kingdom,4
+04:00:00,2009-01-17,Borja,Bohol,Philippines,3
+10:00:00,2009-01-19,London,England,United Kingdom,3
+09:00:00,2009-01-18,Jamestown,RI,United States,2
+11:00:00,2009-01-09,Owings Mills,MD,United States,5
+13:00:00,2009-01-10,Hamilton,Ontario,Canada,5
+07:00:00,2009-01-07,Anchorage,AK,United States,3
+06:00:00,2009-01-18,Mornington,Meath,Ireland,4
+12:00:00,2009-01-30,Fullerton,CA,United States,3
+05:00:00,2009-01-06,Atlanta,GA,United States,3
+10:00:00,2009-01-02,Toronto,Ontario,Canada,4
+03:00:00,2009-01-08,Liverpool,England,United Kingdom,4
+13:00:00,2009-01-12,Ponte San Nicolo,Veneto,Italy,2
+09:00:00,2009-01-19,Las Vegas,NV,United States,5
+07:00:00,2009-01-09,Rochester Hills,MI,United States,4
+05:00:00,2009-01-15,North Bay,Ontario,Canada,4
+23:00:00,2009-01-08,Lindfield,New South Wales,Australia,2
+11:00:00,2009-01-27,Madrid,Madrid,Spain,4
+13:00:00,2009-01-14,Wisconsin Rapids,WI,United States,4
+20:00:00,2009-01-07,Austin,TX,United States,2
+12:00:00,2009-01-20,Chicago,IL,United States,5
+14:00:00,2009-01-06,Las Vegas,NV,United States,4
+06:00:00,2009-01-04,Mullingar,Westmeath,Ireland,3
+18:00:00,2009-01-24,Melbourne,Victoria,Australia,4
+05:00:00,2009-01-25,Ayacucho,Buenos Aires,Argentina,5
+10:00:00,2009-01-05,Eagan,MN,United States,5
+09:00:00,2009-01-13,Vossevangen,Hordaland,Norway,2
+07:00:00,2009-01-22,Ferney-Voltaire,Rhone-Alpes,France,4
+11:00:00,2009-01-02,Sevilla,Andalucia,Spain,5
+09:00:00,2009-01-11,Munchengosserstadt,Thuringia,Germany,5
+20:00:00,2009-01-21,Lindenhurst,NY,United States,3
+09:00:00,2009-01-05,Bloomfield,MI,United States,5
+12:00:00,2009-01-05,Calgary,Alberta,Canada,3
+12:00:00,2009-01-28,Vancouver,British Columbia,Canada,4
+04:00:00,2009-01-21,Klampenborg,Kobenhavn,Denmark,5
+13:00:00,2009-01-07,Calne,England,United Kingdom,4
+11:00:00,2009-01-27,Los Angeles,CA,United States,3
+12:00:00,2009-01-07,Milano,Lombardy,Italy,3
+13:00:00,2009-01-24,Kloten,Zurich,Switzerland,4
+06:00:00,2009-01-30,Fayetteville,NC,United States,3
+18:00:00,2009-01-22,Simpsonville,SC,United States,4
+15:00:00,2009-01-29,Auckland,Auckland,New Zealand,4
+14:00:00,2009-01-02,Reading,England,United Kingdom,2
+11:00:00,2009-01-19,North Caldwell,NJ,United States,4
+16:00:00,2009-01-28,Coventry,England,United Kingdom,4
+12:00:00,2009-01-08,Orillia,Ontario,Canada,4
+16:00:00,2009-01-29,Paris,Ile-de-France,France,4
+13:00:00,2009-01-29,San Jose,CA,United States,5
+06:00:00,2009-01-08,Ingelheim-Mitte,Rhineland-Palatinate,Germany,2
+12:00:00,2009-01-04,Leamington Spa,England,United Kingdom,3
+12:00:00,2009-01-14,Regensdorf,Zurich,Switzerland,3
+06:00:00,2009-01-14,Melbourne,Victoria,Australia,3
+13:00:00,2009-01-27,Geneve,Geneve,Switzerland,3
+23:00:00,2009-01-31,Vaucluse,New South Wales,Australia,4
+14:00:00,2009-01-21,Klosterneuburg,Lower Austria,Austria,5
+08:00:00,2009-01-16,Rancho Cordova,CA,United States,3
+09:00:00,2009-01-11,Creemore,Ontario,Canada,3
+02:00:00,2009-01-08,Sidcup,England,United Kingdom,5
+07:00:00,2009-01-26,Minneapolis,MN,United States,5
+05:00:00,2009-01-31,Phoenix,MD,United States,3
+08:00:00,2009-01-09,Edmonton,Alberta,Canada,5
+03:00:00,2009-01-24,Lyndoch,South Australia,Australia,3
+08:00:00,2009-01-26,Larchmont,NY,United States,5
+10:00:00,2009-01-23,Saint Charles,IL,United States,5
+08:00:00,2009-01-28,Brentwood,TN,United States,3
+19:00:00,2009-01-15,Pensacola,FL,United States,4
+20:00:00,2009-01-09,Kelowna,British Columbia,Canada,3
+21:00:00,2009-01-15,Toronto,Ontario,Canada,2
+00:00:00,2009-01-12,Brondby Strand,Kobenhavn,Denmark,5
+10:00:00,2009-01-25,Florence,Tuscany,Italy,3
+23:00:00,2009-01-12,Perth,Western Australia,Australia,3
+06:00:00,2009-01-11,Saint Petersburg,FL,United States,2
+13:00:00,2009-01-03,Aubonne,Vaud,Switzerland,3
+11:00:00,2009-01-18,Gava,Catalonia,Spain,2
+18:00:00,2009-01-05,Mc Lean,VA,United States,5
+18:00:00,2009-01-02,Hendersonville,TN,United States,2
+14:00:00,2009-01-13,Zurich,Zurich,Switzerland,5
+04:00:00,2009-01-04,Watford,England,United Kingdom,2
+12:00:00,2009-01-27,Amsterdam,Noord-Holland,Netherlands,5
+06:00:00,2009-01-22,Rochester Hills,MI,United States,2
+21:00:00,2009-01-01,Anglesea,Victoria,Australia,4
+18:00:00,2009-01-27,Killarney,New Providence,The Bahamas,2
+14:00:00,2009-01-10,Malibu,CA,United States,2
+15:00:00,2009-01-26,Allen,TX,United States,3
+14:00:00,2009-01-12,Evires,Rhone-Alpes,France,2
+07:00:00,2009-01-16,Den Haag,Zuid-Holland,Netherlands,4
+14:00:00,2009-01-22,Perth City,Western Australia,Australia,5
+06:00:00,2009-01-19,Redruth,England,United Kingdom,3
+11:00:00,2009-01-24,Bruxelles,Brussels (Bruxelles),Belgium,2
+13:00:00,2009-01-13,London,England,United Kingdom,4
+11:00:00,2009-01-13,Montreal,Quebec,Canada,2
+07:00:00,2009-01-19,Miami Beach,FL,United States,3
+07:00:00,2009-01-10,Shankill,Dublin,Ireland,5
+05:00:00,2009-01-20,Oxford,England,United Kingdom,3
+10:00:00,2009-01-06,New York,NY,United States,3
+05:00:00,2009-01-23,Melbourne,Victoria,Australia,3
+16:00:00,2009-01-14,Woodland Hills,CA,United States,4
+18:00:00,2009-01-14,Anchorage,AK,United States,4
+20:00:00,2009-01-08,Yorba Linda,CA,United States,2
+13:00:00,2009-01-07,Waiwera,Auckland,New Zealand,5
+10:00:00,2009-01-25,Jamaica Plain,MA,United States,2
+04:00:00,2009-01-28,Oslo,Oslo,Norway,3
+03:00:00,2009-01-19,Setagaya,Tokyo,Japan,4
+00:00:00,2009-01-18,Donauworth,Bayern,Germany,2
+02:00:00,2009-01-27,Bandon,Cork,Ireland,4
+06:00:00,2009-01-16,Ehingen an der Donau,Baden-Wurttemberg,Germany,3
+05:00:00,2009-01-05,Paris,Ile-de-France,France,2
+14:00:00,2009-01-09,Banbury,England,United Kingdom,5
+10:00:00,2009-01-29,Beverly Hills,CA,United States,2
+03:00:00,2009-01-27,Danderyd,Stockholm,Sweden,3
+12:00:00,2009-01-25,Sebastopol,CA,United States,5
+16:00:00,2009-01-03,Glendora,CA,United States,5
+12:00:00,2009-01-12,Nacka,Stockholm,Sweden,3
+03:00:00,2009-01-27,Canterbury,England,United Kingdom,3
+09:00:00,2009-01-24,Neuchatel,Neuchatel,Switzerland,5
+18:00:00,2009-01-25,Billings,MT,United States,3
+11:00:00,2009-01-15,Libertyville,IL,United States,5
+16:00:00,2009-01-23,Temecula,CA,United States,5
+12:00:00,2009-01-05,Boise,ID,United States,4
+16:00:00,2009-01-29,Rock Hill,SC,United States,2
+00:00:00,2009-01-10,Mililani,HI,United States,4
+14:00:00,2009-01-03,Scamander,Tasmania,Australia,3
+09:00:00,2009-01-15,Freeport City,Freeport,The Bahamas,5
+20:00:00,2009-01-24,North Vancouver,British Columbia,Canada,2
+11:00:00,2009-01-10,Ludwigsburg,Baden-Wurttemberg,Germany,3
+17:00:00,2009-01-04,Rockingham,Western Australia,Australia,4
+00:00:00,2009-01-28,Basel,Basel-Town,Switzerland,5
+01:00:00,2009-01-17,Den Haag,Zuid-Holland,Netherlands,5
+17:00:00,2009-01-25,Westminster,CO,United States,5
+05:00:00,2009-01-22,Penclawdd,Wales,United Kingdom,5
+15:00:00,2009-01-19,Ede,Gelderland,Netherlands,2
+23:00:00,2009-01-21,Plan-les-Ouattes,Geneve,Switzerland,4
+13:00:00,2009-01-19,Stocksund,Stockholm,Sweden,2
+07:00:00,2009-01-16,Stuttgart,Baden-Wurttemberg,Germany,2
+09:00:00,2009-01-22,Tunbridge Wells,England,United Kingdom,5
+12:00:00,2009-01-18,Issaquah,WA,United States,3
+10:00:00,2009-01-04,Burnaby,British Columbia,Canada,2
+14:00:00,2009-01-20,Cypress,CA,United States,3
+18:00:00,2009-01-02,Lititz,PA,United States,2
+07:00:00,2009-01-02,London,England,United Kingdom,2
+07:00:00,2009-01-21,Chadds Ford,PA,United States,2
+17:00:00,2009-01-11,St Thomas,VI,United States,2
+17:00:00,2009-01-16,Coppell,TX,United States,4
+20:00:00,2009-01-09,Ladera Ranch,CA,United States,2
+02:00:00,2009-01-13,Rathfarnham,Dublin,Ireland,4
+04:00:00,2009-01-19,Cagliari,Sardinia,Italy,2
+12:00:00,2009-01-13,Charlottenlund,Kobenhavn,Denmark,3
+07:00:00,2009-01-29,Munchen,Bayern,Germany,5
+04:00:00,2009-01-21,Firenze,Tuscany,Italy,3
+13:00:00,2009-01-07,Baile Atha Bui,Meath,Ireland,3
+16:00:00,2009-01-26,Chamonix-Mont-Blanc,Rhone-Alpes,France,4
+01:00:00,2009-01-29,Gingins,Vaud,Switzerland,3
+12:00:00,2009-01-25,Boca Raton,FL,United States,5
+13:00:00,2009-01-24,Chaska,MN,United States,5
+13:00:00,2009-01-28,Hghlnds Ranch,CO,United States,4
+19:00:00,2009-01-20,Atlanta,GA,United States,5
+17:00:00,2009-01-29,Tenafly,NJ,United States,5
+05:00:00,2009-01-02,Aberdeen,Scotland,United Kingdom,4
+11:00:00,2009-01-31,Djurgarden,Stockholm,Sweden,3
+09:00:00,2009-01-13,Nashville,TN,United States,3
+12:00:00,2009-01-19,Munich,Bayern,Germany,2
+12:00:00,2009-01-18,Utrecht,Utrecht,Netherlands,3
+10:00:00,2009-01-22,Boyceville,WI,United States,3
+07:00:00,2009-01-14,Basauri,Pais Vasco,Spain,4
+01:00:00,2009-01-19,Melbourne,Victoria,Australia,2
+23:00:00,2009-01-08,Kemerburgaz,Istanbul,Turkey,2
+07:00:00,2009-01-25,Worcester,England,United Kingdom,2
+15:00:00,2009-01-17,Thurles,Tipperary,Ireland,4
+12:00:00,2009-01-23,Den Haag,Zuid-Holland,Netherlands,2
+08:00:00,2009-01-24,Cos Cob,CT,United States,4
+03:00:00,2009-01-27,Bern,Bern,Switzerland,4
+23:00:00,2009-01-29,Leicester,England,United Kingdom,3
+18:00:00,2009-01-03,Cornwall,Ontario,Canada,3
+17:00:00,2009-01-24,Sterling,VA,United States,4
+15:00:00,2009-01-02,Cork,Cork,Ireland,5
+10:00:00,2009-01-08,Mount Forest,Ontario,Canada,5
+08:00:00,2009-01-29,Ridgefield,CT,United States,2
+10:00:00,2009-01-24,Porto Alegre,Rio Grande do Sul,Brazil,5
+12:00:00,2009-01-24,Cartierville,Quebec,Canada,2
+13:00:00,2009-01-07,Stuttgart,Baden-Wurttemberg,Germany,2
+15:00:00,2009-01-23,Manhattan,NY,United States,2
+14:00:00,2009-01-26,Sneem,Kerry,Ireland,2
+20:00:00,2009-01-17,Alpharetta,GA,United States,3
+09:00:00,2009-01-05,Sainte-Therese-de-Blainville,Quebec,Canada,4
+08:00:00,2009-01-20,Germantown,TN,United States,4
+12:00:00,2009-01-29,Castleknock,Dublin,Ireland,4
+18:00:00,2009-01-15,Hono,HI,United States,5
+13:00:00,2009-01-23,New Rochelle,NY,United States,3
+10:00:00,2009-01-26,Calgary,Alberta,Canada,5
+11:00:00,2009-01-12,South Waterford,ME,United States,5
+15:00:00,2009-01-29,Washington Township,OH,United States,3
+07:00:00,2009-01-28,Guelph,Ontario,Canada,4
+00:00:00,2009-01-14,Bunbury,Western Australia,Australia,5
+01:00:00,2009-01-13,Mettlach,Saarland,Germany,4
+23:00:00,2009-01-12,Oberwil,Basel-Country,Switzerland,5
+02:00:00,2009-01-22,Beykoz,Istanbul,Turkey,4
+12:00:00,2009-01-29,Arc-et-Senans,Franche-Comte,France,4
+11:00:00,2009-01-28,Grossbodungen,Thuringia,Germany,5
+06:00:00,2009-01-19,Bruxelles,Brussels (Bruxelles),Belgium,5
+05:00:00,2009-01-30,Kilcornan,Limerick,Ireland,2
+14:00:00,2009-01-19,Wilmington,NC,United States,5
+09:00:00,2009-01-08,Aix-en-Provence,Provence-Alpes-Cote d'Azur,France,2
+09:00:00,2009-01-23,Lidingo,Stockholm,Sweden,4
+08:00:00,2009-01-20,Edmonton,Alberta,Canada,3
+13:00:00,2009-01-02,Antibes,Provence-Alpes-Cote d'Azur,France,3
+15:00:00,2009-01-09,Seattle,WA,United States,4
+07:00:00,2009-01-23,Rowayton,CT,United States,2
+10:00:00,2009-01-17,Simcoe,Ontario,Canada,3
+16:00:00,2009-01-19,Lebanon,PA,United States,4
+13:00:00,2009-01-20,Birkdale,Queensland,Australia,3
+21:00:00,2009-01-23,Brisbane,Queensland,Australia,5
+23:00:00,2009-01-21,Strasbourg,Alsace,France,5
+04:00:00,2009-01-21,Suchdol,Prague,Czech Republic,5
+03:00:00,2009-01-10,Stuttgart,Baden-Wurttemberg,Germany,4
+18:00:00,2009-01-15,Villanova,PA,United States,3
+14:00:00,2009-01-20,Norrkoping,Ostergotland,Sweden,2
+11:00:00,2009-01-21,Zumikon,Zurich,Switzerland,2
+06:00:00,2009-01-30,Balgach,St Gallen,Switzerland,4
+17:00:00,2009-01-12,Las Vegas,NV,United States,2
+08:00:00,2009-01-29,Prague,Central Bohemia,Czech Republic,5
+12:00:00,2009-01-24,Warwick,NY,United States,2
+10:00:00,2009-01-07,Silver Spring,MD,United States,3
+17:00:00,2009-01-11,Sacramento,CA,United States,2
+06:00:00,2009-01-30,Blarney,Cork,Ireland,5
+10:00:00,2009-01-07,Ballyneety,Limerick,Ireland,2
+06:00:00,2009-01-27,Haymarket,VA,United States,5
+20:00:00,2009-01-21,George Town,,Cayman Isls,4
+16:00:00,2009-01-04,Scottsdale,AZ,United States,3
+12:00:00,2009-01-06,Cambridge,MA,United States,5
+04:00:00,2009-01-11,Chalfont Saint Peter,England,United Kingdom,2
+06:00:00,2009-01-17,Birmingham,England,United Kingdom,4
+03:00:00,2009-01-04,Den Haag,Zuid-Holland,Netherlands,4
+05:00:00,2009-01-12,Den Haag,Zuid-Holland,Netherlands,4
+13:00:00,2009-01-03,Newmarket,Cork,Ireland,3
+06:00:00,2009-01-11,Irpin',Kiev,Ukraine,2
+06:00:00,2009-01-17,Grosseto,Tuscany,Italy,4
+18:00:00,2009-01-26,Pembroke Pines,FL,United States,5
+13:00:00,2009-01-31,Waterford,Ontario,Canada,2
+02:00:00,2009-01-21,Carouge,Geneve,Switzerland,5
+13:00:00,2009-01-18,Chester,CT,United States,5
+18:00:00,2009-01-18,Reston,VA,United States,2
+01:00:00,2009-01-31,Milan,Lombardy,Italy,5
+16:00:00,2009-01-25,Vancouver,British Columbia,Canada,2
+19:00:00,2009-01-16,Alpharetta,GA,United States,2
+15:00:00,2009-01-31,Ringgold,GA,United States,3
+08:00:00,2009-01-09,Wall,NJ,United States,4
+22:00:00,2009-01-04,Powell River,British Columbia,Canada,2
+15:00:00,2009-01-10,Huntington Beach,CA,United States,3
+19:00:00,2009-01-16,Los Gatos,CA,United States,4
+08:00:00,2009-01-25,Oslo,Oslo,Norway,4
+08:00:00,2009-01-25,Oxford,England,United Kingdom,3
+09:00:00,2009-01-17,Alexandria,VA,United States,4
+01:00:00,2009-01-24,Rome,Lazio,Italy,3
+15:00:00,2009-01-27,Random Lake,WI,United States,4
+21:00:00,2009-01-25,San Francisco,CA,United States,2
+08:00:00,2009-01-24,Baluan,General Santos,Philippines,4
+14:00:00,2009-01-06,Brussels,Brussels (Bruxelles),Belgium,5
+14:00:00,2009-01-17,Bedford Corners,NY,United States,5
+12:00:00,2009-01-21,Istanbul,Istanbul,Turkey,5
+23:00:00,2009-01-30,Hilversum,Noord-Holland,Netherlands,5
+12:00:00,2009-01-12,Milford,ME,United States,4
+21:00:00,2009-01-29,Vancouver,British Columbia,Canada,4
+13:00:00,2009-01-24,Kidderminster,England,United Kingdom,4
+13:00:00,2009-01-25,Lausanne,Vaud,Switzerland,5
+13:00:00,2009-01-12,Claygate,England,United Kingdom,2
+11:00:00,2009-01-05,Laasby,Arhus,Denmark,3
+08:00:00,2009-01-02,Budaors,Pest,Hungary,2
+07:00:00,2009-01-31,London,England,United Kingdom,2
+02:00:00,2009-01-20,Santo Domingo City,Distrito Nacional,Dominican Republic,3
+20:00:00,2009-01-25,Croton On Hudson,NY,United States,4
+19:00:00,2009-01-25,Vespasiano,Minas Gerais,Brazil,3
+09:00:00,2009-01-30,Nashville,TN,United States,2
+19:00:00,2009-01-07,Ottawa,Ontario,Canada,2
+10:00:00,2009-01-04,Naples,FL,United States,4
+14:00:00,2009-01-23,Bridgewater,NJ,United States,4
+10:00:00,2009-01-12,Washington,DC,United States,3
+04:00:00,2009-01-19,Hagen,Lorraine,France,5
+21:00:00,2009-01-21,Taicheng,Guangdong,China,4
+04:00:00,2009-01-25,Groningen,Groningen,Netherlands,2
+01:00:00,2009-01-30,Villars,Vaud,Switzerland,3
+15:00:00,2009-01-26,Huntersville,NC,United States,2
+15:00:00,2009-01-15,Cartersburg,IN,United States,3
+20:00:00,2009-01-02,Flower Mound,TX,United States,5
+09:00:00,2009-01-25,Rochester,MI,United States,2
+20:00:00,2009-01-20,Dubai,Dubayy,United Arab Emirates,5
+11:00:00,2009-01-08,Langnau,Zurich,Switzerland,5
+20:00:00,2009-01-06,Mission,British Columbia,Canada,4
+18:00:00,2009-01-06,Columbus,OH,United States,3
+06:00:00,2009-01-11,Clondalkin,Dublin,Ireland,5
+14:00:00,2009-01-19,Harold's Cross,Dublin,Ireland,2
+06:00:00,2009-01-31,Sag Harbor,NY,United States,3
+09:00:00,2009-01-06,San Diego,CA,United States,2
+07:00:00,2009-01-21,Wilmington,DE,United States,4
+17:00:00,2009-01-20,Toronto,Ontario,Canada,5
+12:00:00,2009-01-29,Issaquah,WA,United States,5
+23:00:00,2009-01-24,Phuket,Phuket,Thailand,4
+10:00:00,2009-01-28,Athina,Attiki,Greece,2
+14:00:00,2009-01-30,Geneve,Geneve,Switzerland,5
+02:00:00,2009-01-21,Chichester,England,United Kingdom,3
+06:00:00,2009-01-26,Massagno,Ticino,Switzerland,5
+14:00:00,2009-01-04,Cardiff,Wales,United Kingdom,4
+03:00:00,2009-01-09,Ferney-Voltaire,Rhone-Alpes,France,4
+19:00:00,2009-01-08,Mableton,GA,United States,2
+16:00:00,2009-01-10,San Diego,CA,United States,2
+06:00:00,2009-01-06,La Louviere,Hainaut,Belgium,5
+13:00:00,2009-01-23,Minneapolis,MN,United States,3
+17:00:00,2009-01-18,Mafra,Santa Catarina,Brazil,2
+15:00:00,2009-01-05,Ashford,England,United Kingdom,4
+10:00:00,2009-01-02,Edmonton,Alberta,Canada,4
+09:00:00,2009-01-25,London,England,United Kingdom,3
+06:00:00,2009-01-05,Lucca,Tuscany,Italy,2
+02:00:00,2009-01-06,Perth,Western Australia,Australia,2
+14:00:00,2009-01-27,Arlington,VA,United States,4
+12:00:00,2009-01-08,Calgary,Alberta,Canada,5
+12:00:00,2009-01-29,Chiefland,FL,United States,5
+10:00:00,2009-01-19,Stavenger,Rogaland,Norway,3
+02:00:00,2009-01-08,Begnins,Vaud,Switzerland,2
+17:00:00,2009-01-19,Newton,MA,United States,2
+00:00:00,2009-01-11,Den Haag,Zuid-Holland,Netherlands,3
+05:00:00,2009-01-16,Berikon,Aargau,Switzerland,4
+06:00:00,2009-01-19,Santa Barbaraa,Heredia,Costa Rica,2
+01:00:00,2009-01-26,Churra,Murcia,Spain,5
+10:00:00,2009-01-30,Castle Rock,CO,United States,2
+05:00:00,2009-01-23,Zug,Zug,Switzerland,4
+09:00:00,2009-01-07,Ashford,England,United Kingdom,4
+16:00:00,2009-01-01,Rockville,MD,United States,2
+09:00:00,2009-01-23,Madrid,Madrid,Spain,4
+12:00:00,2009-01-22,Aasgaardstrand,Vestfold,Norway,2
+13:00:00,2009-01-16,Milano,Lombardy,Italy,3
+09:00:00,2009-01-13,Anieres,Geneve,Switzerland,4
+11:00:00,2009-01-25,Fresno,TX,United States,4
+14:00:00,2009-01-26,Fresno,TX,United States,4
+13:00:00,2009-01-07,Warwick,Quebec,Canada,5
+11:00:00,2009-01-15,Watford,England,United Kingdom,5
+12:00:00,2009-01-27,Waterford,Waterford,Ireland,5
+14:00:00,2009-01-28,Pruszkow,Mazowieckie,Poland,3
+07:00:00,2009-01-23,Hamilton,Hamilton,Bermuda,2
+15:00:00,2009-01-22,Ottawa,Ontario,Canada,2
+10:00:00,2009-01-16,Montgomery,TX,United States,3
+22:00:00,2009-01-26,Tokyo,Tokyo,Japan,4
+18:00:00,2009-01-25,Manteno,IL,United States,3
+06:00:00,2009-01-16,Benoni,Gauteng,South Africa,2
+17:00:00,2009-01-12,Winter Haven,FL,United States,2
+04:00:00,2009-01-02,Tranby,Buskerud,Norway,5
+03:00:00,2009-01-05,Cork,Cork,Ireland,3
+15:00:00,2009-01-15,Fort Lauderdale,FL,United States,2
+05:00:00,2009-01-26,Cranberry Twp,PA,United States,3
+10:00:00,2009-01-24,Arlington,VA,United States,3
+07:00:00,2009-01-02,Lake Ronkonkoma,NY,United States,2
+06:00:00,2009-01-26,Alexandria,VA,United States,5
+07:00:00,2009-01-17,Lipari,Sicilia,Italy,2
+07:00:00,2009-01-17,Lipari,Sicilia,Italy,3
+04:00:00,2009-01-18,Lipari,Sicilia,Italy,2
+08:00:00,2009-01-26,Bluffton,SC,United States,5
+08:00:00,2009-01-11,Winter Spgs,FL,United States,5
+10:00:00,2009-01-21,Chelmsford,MA,United States,5
+12:00:00,2009-01-29,Cabinteely,Dublin,Ireland,3
+13:00:00,2009-01-13,Toronto,Ontario,Canada,4
+18:00:00,2009-01-31,Cincinnati,OH,United States,4
+15:00:00,2009-01-22,Houston,TX,United States,5
+11:00:00,2009-01-05,Rodeo,CA,United States,5
+11:00:00,2009-01-23,Poughkeepsie,NY,United States,2
+20:00:00,2009-01-07,Cincinnati,OH,United States,2
+09:00:00,2009-01-13,North Eastham,MA,United States,4
+15:00:00,2009-01-25,Sitka,AK,United States,4
+20:00:00,2009-01-30,Carcross,Yukon Territory,Canada,4
+04:00:00,2009-01-31,Taby,Stockholm,Sweden,5
+10:00:00,2009-01-20,Calgary,Alberta,Canada,4
+05:00:00,2009-01-09,Alcobendas,Madrid,Spain,5
+07:00:00,2009-01-13,Chicago,IL,United States,2
+11:00:00,2009-01-03,Sammamish,WA,United States,5
+20:00:00,2009-01-17,Waiau Pa,Auckland,New Zealand,3
+07:00:00,2009-01-05,Ewa Beach,HI,United States,5
+14:00:00,2009-01-25,Statesville,NC,United States,3
+17:00:00,2009-01-25,Kapaa,HI,United States,2
+12:00:00,2009-01-03,Burbank,CA,United States,3
+03:00:00,2009-01-22,Oegstgeest,Zuid-Holland,Netherlands,5
+05:00:00,2009-01-23,Blackrock,Dublin,Ireland,5
+11:00:00,2009-01-25,WalcProduct3ee,Tyrol,Austria,5
+04:00:00,2009-01-10,Foxrock,Dublin,Ireland,2
+09:00:00,2009-01-10,Hilton Head,SC,United States,5
+12:00:00,2009-01-22,Valley Center,CA,United States,4
+18:00:00,2009-01-06,Swampscott,MA,United States,4
+05:00:00,2009-01-19,Edinburgh,Scotland,United Kingdom,3
+10:00:00,2009-01-25,San Antonio,TX,United States,2
+08:00:00,2009-01-14,Bristol,RI,United States,3
+17:00:00,2009-01-02,Perth,Western Australia,Australia,5
+18:00:00,2009-01-07,Greenville,TX,United States,5
+21:00:00,2009-01-03,Pls Vrds Est,CA,United States,3
+05:00:00,2009-01-04,Hradec Kralove,East Bohemia,Czech Republic,4
+09:00:00,2009-01-04,Maidstone,England,United Kingdom,5
+04:00:00,2009-01-02,Saint Albans,England,United Kingdom,5
+11:00:00,2009-01-22,Voluntari,Bucuresti,Romania,2
+12:00:00,2009-01-07,Nadur,,Malta,2
+13:00:00,2009-01-29,Morrison,CO,United States,5
+02:00:00,2009-01-27,Cobham,England,United Kingdom,2
+13:00:00,2009-01-07,Izmir,Izmir,Turkey,4
+10:00:00,2009-01-23,Hollywood,CA,United States,2
+04:00:00,2009-01-19,Brighton,England,United Kingdom,2
+22:00:00,2009-01-28,Hawera,Taranaki,New Zealand,4
+18:00:00,2009-01-04,Worongary,Queensland,Australia,4
+20:00:00,2009-01-12,Atlantida,Guatemala,Guatemala,4
+12:00:00,2009-01-24,El Escorial,Madrid,Spain,2
+11:00:00,2009-01-28,Morrison,CO,United States,5
+17:00:00,2009-01-07,Augusta,GA,United States,2
+12:00:00,2009-01-23,Avalon,New South Wales,Australia,5
+19:00:00,2009-01-07,Sydney,New South Wales,Australia,4
+11:00:00,2009-01-26,Lahti,Etela-Suomen Laani,Finland,2
+13:00:00,2009-01-05,Inner City,Vienna,Austria,2
+13:00:00,2009-01-26,Baden,Aargau,Switzerland,2
+10:00:00,2009-01-20,Huddersfield,England,United Kingdom,4
+14:00:00,2009-01-22,Belfast,Northern Ireland,United Kingdom,5
+05:00:00,2009-01-28,Black River,Black River,Mauritius,5
+04:00:00,2009-01-01,Skaneateles,NY,United States,5
+11:00:00,2009-01-08,Haverhill,England,United Kingdom,4
+21:00:00,2009-01-12,Madison,WI,United States,4
