@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scheduling App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.min.css.map">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.css">
+    <link rel="stylesheet" type="text/css" href="https://gitcdn.xyz/repo/pi0/clippyjs/master/assets/clippy.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='custom.css') }}">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="module" src="https://sap.github.io/ui5-webcomponents/resources/sap/ui/webcomponents/main/bundle.esm.js"></script>
+    <script data-id="sap-ui-config" type="application/json">
+        {
+            "language": "EN",
+            "compactSize": true
+        }
+    </script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/heatmap.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        window.onload =  init;
+        function init() {
+            Highcharts.chart('container2', {
+
+    chart: {
+        type: 'heatmap',
+        marginTop: 40,
+        marginBottom: 80,
+        plotBorderWidth: 1
+    },
+
+
+    title: {
+        text: 'Employee need at every hour based on Traffic to Employee Ratio -TER'
+    },
+
+    xAxis: {
+        categories: ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00',
+        '19:00','20:00','21:00']
+    },
+
+    yAxis: {
+       <!-- categories: ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'], -->
+        categories: ['Saturday','Friday', 'Thursday', 'Wednesday', 'Tuesday', 'Monday','Sunday'],
+        title: null
+    },
+
+    colorAxis: {
+        min: 0,
+        minColor: '#FFFFFF',
+        maxColor: Highcharts.getOptions().colors[0]
+    },
+
+    legend: {
+        align: 'right',
+        layout: 'vertical',
+        margin: 0,
+        verticalAlign: 'top',
+        y: 25,
+        symbolHeight: 280
+    },
+
+    tooltip: {
+        formatter: function () {
+            return 'Employee need on ' + this.series.yAxis.categories[this.point.y] + '<br>' +
+                    'at ' + this.series.xAxis.categories[this.point.x] + ' is ' + this.point.value;
+        }
+
+    },
+
+    series: [{
+        name: 'Employee needed',
+        borderWidth: 1,
+        data: {{ emData }},
+        dataLabels: {
+            enabled: true,
+            color: '#000000'
+        }
+    }]
+
+});
+        }
+    </script>
+
+    <style>
+        sup {
+            color: #839198;
+        }
+        .small {
+            height: 100% !important;
+        }
+        .card-header {
+            padding: 0.25rem .75rem;
+            font-family: "72","72full",Arial,Helvetica,sans-serif;
+            font-weight: 400;
+            font-size: .865rem;
+        }
+        .card {
+            border: 0;
+        }
+    </style>
+    <!-- Google -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+      google.charts.load('current', {'packages':['gauge','orgchart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Ideal Hours', {{ idHours }}],
+          ['Feasible Hours', {{ fHours }}]
+        ]);
+
+        var options = {
+          width: 400, height: 120,
+          redFrom: 190, redTo: 210,
+          yellowFrom:170, yellowTo: 190,
+          minorTicks: 5,max:210
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      } // Gauge Ends
+
+       // Org Chart
+   //     google.charts.load('current', {packages:["orgchart"]});
+      google.charts.setOnLoadCallback(drawChart2);
+
+      function drawChart2() {
+        var data2 = new google.visualization.DataTable();
+        data2.addColumn('string', 'Name');
+        data2.addColumn('string', 'Manager');
+        data2.addColumn('string', 'ToolTip');
+
+        // For each orgchart box, provide the name, manager, and tooltip to show.
+        data2.addRows([
+          [{v:'SM', f: 'SM  <br> {{ smHours }}' }, '', 'Store Manager'],
+          [{v:'ASM', f:'ASM <br> {{ asmHours }}'}, 'SM', 'Assistant Store Manager'],
+          [{v:'TEMPORARY1', f:'TEMPORARY1 <br> {{ t1Hours }}'}, 'ASM', 'Temporary Worker'],
+          [{v:'TEMPORARY2', f:'TEMPORARY2 <br> {{ t2Hours }}'}, 'ASM', 'Temporary Worker'],
+          [{v:'TEMPORARY3', f:'TEMPORARY3 <br> {{ t3Hours }}'}, 'ASM', 'Temporary Worker']
+        ]);
+
+        // Create the chart.
+        var chart2 = new google.visualization.OrgChart(document.getElementById('chart_div2'));
+        // Draw the chart, setting the allowHtml option to true for the tooltips.
+        chart2.draw(data2, {allowHtml:true});
+      }
+
+       // Org Chart Ends
+    </script>
+
+<!-- Google Ends -->
+
+</head>
+<body>
+<div data-role="page" data-control-title="Home" id="page1" class="home">
+    <ui5-shellbar
+            profile="https://media.licdn.com/dms/image/C5603AQH-K-pXcyWFdQ/profile-displayphoto-shrink_200_200/0?e=1563408000&v=beta&t=8FyXn09iL7QobIU7vJVAKWbKIo9f1J9qQTS_S2ejOcc"
+            primary-title="Final Capstone Project DATA 698"
+            secondary-title=" - Dhananjay Kumar"
+            logo="https://media.glassdoor.com/sqll/1617844/cuny-school-of-professional-studies-squarelogo-1505894966772.png"
+    >
+    </ui5-shellbar><br><br>
+    <div class="container">
+        <div class="container-fluid">
+            <div class="text-center">
+                <h4>Employee need and Optimize Schedule</h4><br>
+
+                <input type="button" value="Back" onclick="window.history.back()" /><br>
+
+                <table style="width: 100%">
+                    <tr>
+                    <td>
+                    <div id="chart_div" style="min-width: 310px; max-width: 600px; height: 120px;"></div>
+                    </td>
+                    <td>
+                       <div id="chart_div2"></div>
+                    </td>
+                    </tr>
+                </table> <br>
+
+                   <div id="container2" style="height: 400px; min-width: 310px; max-width: 800px; margin: 0 auto"></div><br>
+                   <div id="tableDiv" style="..."></div>
+
+            </div>
+
+          <!--  <form method="post">
+                <input type = "submit" value = "Back" />
+            </form> -->
+
+        </div>
+
+    </div>
+</div> <!--Page1 Ends -->
+</body>
+<!-- Add these scripts to  the bottom of the page -->
+<script src="https://unpkg.com/jquery@3.2.1"></script>
+
+<script src="https://unpkg.com/clippyjs@latest"></script>
+
+<script type="text/javascript">
+
+    let Genie;
+clippy.load('Genie', function(agent){
+    Genie=agent;
+
+
+});
+function fTER() {
+    // play a given animation
+Genie.play('Searching');
+// Show text balloon
+Genie.speak('TER is nothing but a ratio which is defined as Average No. of Total Customer Traffic divided by' +
+    ' Total No. of Employees present in Store at any given hour');
+// stop the current action in the queue
+Genie.stopCurrent();
+}
+</script>
+</html>
+ <script>
+   // function CreateTable() {
+
+        // Data
+        var dArray = {{ dList|tojson }}
+        console.log(dArray)
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement('table');
+
+        // SET THE TABLE ID.
+        // WE WOULD NEED THE ID TO TRAVERSE AND EXTRACT DATA FROM THE TABLE.
+        table.setAttribute('id', 'empTable');
+       // table.className = 'custom-class';
+
+        var arrHead = new Array();
+        arrHead = ['Day', 'Title','9:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00',
+        '18:00','19:00','20:00','Total'];
+
+        var arrValue = new Array();
+        for (var i = 0; i < dArray.length; i++) {
+          //  console.log(dArray[i]);
+            arrValue.push(dArray[i])
+        //Do something
+        }
+      //  arrValue.push(['1', 'Green Field', 'Accountant']);
+        //arrValue.push(['2', 'Arun Banik', 'Project Manager']);
+        //arrValue.push(['3', 'Dewane Paul', 'Programmer']);
+
+        var tr = table.insertRow(-1);
+
+        for (var h = 0; h < arrHead.length; h++) {
+            var th = document.createElement('th');              // TABLE HEADER.
+            th.innerHTML = arrHead[h];
+            tr.appendChild(th);
+        }
+
+        for (var c = 0; c <= arrValue.length - 1; c++) {
+            tr = table.insertRow(-1);
+
+            for (var j = 0; j < arrHead.length; j++) {
+                var td = document.createElement('td');          // TABLE DEFINITION.
+                td = tr.insertCell(-1);
+                td.innerHTML = arrValue[c][j];                  // ADD VALUES TO EACH CELL.
+            }
+        }
+
+
+        // FINALLY ADD THE NEWLY CREATED TABLE AND BUTTON TO THE BODY.
+      //  document.body.appendChild(table);
+
+       // var _div = document.getElementById("tableDiv");
+       // console.log(_div)
+       // _div.appendChild(table);
+         $('#tableDiv').append(table)
+
+
+  //  }
+
+</script>
+

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scheduling App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.min.css.map">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.css">
+    <link rel="stylesheet" type="text/css" href="https://gitcdn.xyz/repo/pi0/clippyjs/master/assets/clippy.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="module" src="https://sap.github.io/ui5-webcomponents/resources/sap/ui/webcomponents/main/bundle.esm.js"></script>
+    <script data-id="sap-ui-config" type="application/json">
+        {
+            "language": "EN",
+            "compactSize": true
+        }
+    </script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/heatmap.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script>
+        window.onload =  init;
+        function init() {
+            Highcharts.chart('container', {
+
+    chart: {
+        type: 'heatmap',
+        marginTop: 40,
+        marginBottom: 80,
+        plotBorderWidth: 1
+    },
+
+
+    title: {
+        text: 'Average Customer Traffic across Weekdays'
+    },
+
+    xAxis: {
+        categories: ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00',
+        '19:00','20:00','21:00']
+    },
+
+    yAxis: {
+       <!-- categories: ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'], -->
+        categories: ['Saturday','Friday', 'Thursday', 'Wednesday', 'Tuesday', 'Monday','Sunday'],
+        title: null
+    },
+
+    colorAxis: {
+        min: 0,
+        minColor: '#FFFFFF',
+        maxColor: Highcharts.getOptions().colors[0]
+    },
+
+    legend: {
+        align: 'right',
+        layout: 'vertical',
+        margin: 0,
+        verticalAlign: 'top',
+        y: 25,
+        symbolHeight: 280
+    },
+
+    tooltip: {
+        formatter: function () {
+            return 'Avg. Traffic on ' + this.series.yAxis.categories[this.point.y] + '<br>' +
+                    'at ' + this.series.xAxis.categories[this.point.x] + ' is ' + this.point.value;
+        }
+
+    },
+
+    series: [{
+        name: 'Sales per employee',
+        borderWidth: 1,
+        data: {{ trData }},
+        dataLabels: {
+            enabled: true,
+            color: '#000000'
+        }
+    }]
+
+});
+        }
+    </script>
+
+    <style>
+        sup {
+            color: #839198;
+        }
+        .small {
+            height: 100% !important;
+        }
+        .card-header {
+            padding: 0.25rem .75rem;
+            font-family: "72","72full",Arial,Helvetica,sans-serif;
+            font-weight: 400;
+            font-size: .865rem;
+        }
+        .card {
+            border: 0;
+        }
+    </style>
+
+</head>
+<body>
+<div data-role="page" data-control-title="Home" id="page1" class="home">
+    <ui5-shellbar
+            profile="https://media.licdn.com/dms/image/C5603AQH-K-pXcyWFdQ/profile-displayphoto-shrink_200_200/0?e=1563408000&v=beta&t=8FyXn09iL7QobIU7vJVAKWbKIo9f1J9qQTS_S2ejOcc"
+            primary-title="Final Capstone Project DATA 698"
+            secondary-title=" - Dhananjay Kumar"
+            logo="https://media.glassdoor.com/sqll/1617844/cuny-school-of-professional-studies-squarelogo-1505894966772.png"
+    >
+    </ui5-shellbar><br><br>
+    <div class="container">
+        <div class="container-fluid">
+            <div class="text-center">
+                <h4>Traffic Based Automated Employee Scheduling for Retail Store</h4><br>
+                <p>
+                    For help double click on any text or input box !
+                </p> <br>
+
+                   <div id="container" style="height: 400px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+
+            </div><br><h5> Enter Constraints </h5> <br>
+            <form method="post" id="myForm">
+
+              <table style="width:100%">
+                 <tr>
+                     <td>
+                          <div class="card">
+                        <div class="card-header"><h4>Constraints 1</h4>
+                            <!--    <img class="card-img-top" src="https://dl2.macupdate.com/images/icons256/58165.png" width="50%" height="50%" alt="Card image"> -->
+                        </div>
+                        <div class="card-body">
+                             <ui5-label class="samples-big-margin-right" for="min_seq" >Minimum Sequence</ui5-label><br>
+                             <input class="form-control form-control-sm" type="number" name="min_seq" min="2" max="4" style="width: 299px" value="3" required/><br>
+
+                            <ui5-label class="samples-big-margin-right" for="max_seq" >Maximum Sequence</ui5-label><br>
+                             <input class="form-control form-control-sm" type="number" name="max_seq" min="6" max="9" style="width: 299px" value="9" required/><br>
+
+                            <ui5-label class="samples-big-margin-right" for="min_work" >Minimum Work</ui5-label><br>
+                             <input class="form-control form-control-sm" type="number" name="min_work" min="3" max="5" style="width: 299px" value="3" required/><br>
+
+                            <ui5-label class="samples-big-margin-right" for="max_work" >Maximum work</ui5-label><br>
+                             <input class="form-control form-control-sm" type="number" name="max_work" min="9" max="10" style="width: 299px" value="10" required/>
+                        </div> <!-- card body -->
+                    </div> <!-- card -->
+                     </td>
+                      <td>
+                         <div class="card">
+                        <div class="card-header"><h4>Constraints 2 </h4>
+                                <!-- <img class="card-img-top" src="https://dl2.macupdate.com/images/icons256/58165.png" width="50%" height="50%" alt="Card image"> -->
+                        </div>
+                        <div class="card-body">
+                             <ui5-label class="samples-big-margin-right" ondblclick="fTER()" for="TER" >Traffic to Emp. Ratio - TER</ui5-label><br>
+                             <input ondblclick="fTER()" class="form-control form-control-sm" type="number" name="TER" min="1.4" max="2" step="0.1" style="width: 299px" value="1.5" required/><br>
+
+                            <ui5-label class="samples-big-margin-right" for="max_seq2" >Maximum Sequence</ui5-label><br>
+                             <input class="form-control form-control-sm" type="number" name="max_seq2" min="6" max="9" style="width: 299px" value="9" required/><br>
+
+                            <ui5-label class="samples-big-margin-right" for="min_work2" >Minimum Work</ui5-label><br>
+                             <input class="form-control form-control-sm" type="number" name="min_work2" min="3" max="5" style="width: 299px" value="3" required/><br>
+
+                            <ui5-label class="samples-big-margin-right" for="max_work2" >Maximum work</ui5-label><br>
+                             <input class="form-control form-control-sm" type="number" name="max_work2" min="9" max="10" style="width: 299px" value="10" required/>
+                        </div> <!-- card body -->
+                    </div> <!-- card -->
+                     </td>
+                 </tr>
+                  <tr>
+                      <td style="width:100%">
+                           <div class="card"><br>
+                              <input type = "submit" id="mySubmit" value = "submit" />
+                          </div>
+                      </td>
+
+                  </tr>
+              </table>
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+</div> <!--Page1 Ends -->
+</body>
+<!-- Add these scripts to  the bottom of the page -->
+<script src="https://unpkg.com/jquery@3.2.1"></script>
+
+<script src="https://unpkg.com/clippyjs@latest"></script>
+
+<script type="text/javascript">
+
+    let Genie;
+clippy.load('Genie', function(agent){
+    Genie=agent;
+    // Do anything with the loaded agent //
+  //  agent.show();
+    // play a random animation //
+// agent.animate();
+    // Show text balloon//
+//agent.speak('Hi, I am your Scheduling Genie. I will help you in understanding Automated Scheduling on this page.' +
+  //  ' In case of help, double click on any input box and I will help you !');
+
+});
+function fTER() {
+    // play a given animation
+Genie.show();
+//Genie.play('Searching');
+// Show text balloon
+Genie.speak('TER is nothing but a ratio which is defined as Average No. of Total Customer Traffic divided by' +
+    ' Total No. of Employees present in Store at any given hour');
+// stop the current action in the queue
+Genie.stopCurrent();
+//code before the pause
+setTimeout(function(){
+    //do what you need here
+    Genie.hide();
+}, 11500);
+}
+
+var myForm = document.getElementById('myForm');
+
+myForm.addEventListener("submit", function(evt) {
+    var elemSubmit = document.getElementById('mySubmit');
+    elemSubmit.setAttribute("disabled", "disabled");
+
+    // Removes disabling after 3 seconds
+    window.setTimeout(function() {
+        elemSubmit.removeAttribute("disabled");
+    }, 8500);
+},false);
+</script>
+</html>

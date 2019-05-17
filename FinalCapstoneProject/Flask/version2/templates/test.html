@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.min.css.map">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.css">
+    <link rel="stylesheet" type="text/css" href="https://gitcdn.xyz/repo/pi0/clippyjs/master/assets/clippy.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+    <div id="tableDiv">
+       <!-- <div onload="CreateTable();">HEllo</div> -->
+    </div>
+</body>
+</html>
+<script>
+   // function CreateTable() {
+
+        // Data
+        var dArray = {{ dList|tojson }}
+        console.log(dArray)
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement('table');
+
+        // SET THE TABLE ID.
+        // WE WOULD NEED THE ID TO TRAVERSE AND EXTRACT DATA FROM THE TABLE.
+        table.setAttribute('id', 'empTable');
+
+        var arrHead = new Array();
+        arrHead = ['Day', 'Title','9:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00',
+        '18:00','19:00','20:00','Total'];
+
+        var arrValue = new Array();
+        for (var i = 0; i < dArray.length; i++) {
+          //  console.log(dArray[i]);
+            arrValue.push(dArray[i])
+        //Do something
+        }
+      //  arrValue.push(['1', 'Green Field', 'Accountant']);
+        //arrValue.push(['2', 'Arun Banik', 'Project Manager']);
+        //arrValue.push(['3', 'Dewane Paul', 'Programmer']);
+
+        var tr = table.insertRow(-1);
+
+        for (var h = 0; h < arrHead.length; h++) {
+            var th = document.createElement('th');              // TABLE HEADER.
+            th.innerHTML = arrHead[h];
+            tr.appendChild(th);
+        }
+
+        for (var c = 0; c <= arrValue.length - 1; c++) {
+            tr = table.insertRow(-1);
+
+            for (var j = 0; j < arrHead.length; j++) {
+                var td = document.createElement('td');          // TABLE DEFINITION.
+                td = tr.insertCell(-1);
+                td.innerHTML = arrValue[c][j];                  // ADD VALUES TO EACH CELL.
+            }
+        }
+
+
+        // FINALLY ADD THE NEWLY CREATED TABLE AND BUTTON TO THE BODY.
+      //  document.body.appendChild(table);
+
+       // var _div = document.getElementById("tableDiv");
+       // console.log(_div)
+       // _div.appendChild(table);
+         $('#tableDiv').append(table)
+
+
+  //  }
+
+</script>
